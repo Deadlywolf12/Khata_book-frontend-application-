@@ -6,7 +6,7 @@ import 'package:khatabookn/theme/font_structures.dart';
 
 void showSnackBar(context, String message) {
   final snackBar = SnackBar(
-    backgroundColor: AppTheme.white,
+    backgroundColor: AppTheme.primaryColor,
     duration: const Duration(milliseconds: 1500),
     content: Text(
       message,
@@ -15,6 +15,7 @@ void showSnackBar(context, String message) {
         fontWeight: boldfontweight,
       ),
     ),
+    behavior: SnackBarBehavior.floating,
   );
   ScaffoldMessenger.of(context).showSnackBar(snackBar);
 }

@@ -7,14 +7,14 @@ import 'package:khatabookn/widgets/filled_box.dart';
 import 'package:khatabookn/widgets/snack_bar.dart';
 import 'package:lucide_icons/lucide_icons.dart';
 
-class AddNewTransactionScreen extends StatefulWidget {
-  const AddNewTransactionScreen({super.key});
+class AddLoanScreen extends StatefulWidget {
+  const AddLoanScreen({super.key});
 
   @override
-  State<AddNewTransactionScreen> createState() => _AddNewTransactionScreenState();
+  State<AddLoanScreen> createState() => _AddLoanScreenState();
 }
 
-class _AddNewTransactionScreenState extends State<AddNewTransactionScreen> {
+class _AddLoanScreenState extends State<AddLoanScreen> {
   int _selectedTab = 0;
   final TextEditingController _amountController = TextEditingController();
   final TextEditingController _noteController = TextEditingController();
@@ -55,7 +55,7 @@ class _AddNewTransactionScreenState extends State<AddNewTransactionScreen> {
   }
 
   void _addTransaction() {
-    showSnackBar(context, "Transaction added successfully");
+    showSnackBar(context, "Loan added successfully");
   }
 
   @override
@@ -64,7 +64,7 @@ class _AddNewTransactionScreenState extends State<AddNewTransactionScreen> {
       appBar: AppBar(
         backgroundColor: AppTheme.cardColor,
         elevation: 0,
-        title: const Text('Add Transaction'),
+        title: const Text('Add Loan'),
         centerTitle: true,
       ),
       body: SingleChildScrollView(
@@ -78,8 +78,8 @@ class _AddNewTransactionScreenState extends State<AddNewTransactionScreen> {
               padding: EdgeInsets.zero,
               child: Row(
                 children: [
-                  _buildTabButton("Expense", 0),
-                  _buildTabButton("Income", 1),
+                  _buildTabButton("Taking", 0),
+                  _buildTabButton("Giving", 1),
                 ],
               ),
             ),
@@ -204,7 +204,7 @@ class _AddNewTransactionScreenState extends State<AddNewTransactionScreen> {
                   ),
                 ),
                 child: const Text(
-                  'Add Transaction',
+                  'Add Loan',
                   style: TextStyle(
                     fontSize: 18,
                     fontWeight: FontWeight.w600,

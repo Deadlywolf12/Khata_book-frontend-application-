@@ -12,7 +12,7 @@ import 'package:khatabookn/views/auth/signup.dart';
 import 'package:khatabookn/views/home/home_screen.dart';
 import 'package:khatabookn/views/loans/loans.dart';
 
-import 'package:khatabookn/views/navbar/app_scaffold.dart';
+import 'package:khatabookn/views/navbar/navbar.dart';
 import 'package:khatabookn/views/settings/settings.dart';
 
 import 'package:khatabookn/views/splash/splash.dart';
@@ -28,6 +28,7 @@ class MyRouter {
   static const String forgotPass = 'forgotPass';
   static const String newPass = 'newPass';
   static const String app = 'app';
+  static const String newTransaction = 'newTransaction';
 
   static final GoRouter router = GoRouter(
     initialLocation: '/$splash',
@@ -71,6 +72,11 @@ class MyRouter {
         name: newPass,
         builder: (context, state) => const SetNewPasswordScreen(),
       ),
+      // GoRoute(
+      //   path: '/$newTransaction',
+      //   name: newTransaction,
+      //   builder: (context, state) => const AddNewTransactionScreen(),
+      // ),
    GoRoute(
       path: '/home',
       builder: (context, state) => const NavigationHandler(),
