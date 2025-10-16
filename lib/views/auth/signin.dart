@@ -182,7 +182,7 @@ class _SignInScreenState extends State<SignInScreen> {
                       ),
                       GestureDetector(
                         onTap: () {
-                          Go.named(context,MyRouter.signup);
+                          Go.namedReplace(context,MyRouter.signup);
                         },
                         child: const Text(
                           "Sign Up",

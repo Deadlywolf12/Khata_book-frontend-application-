@@ -2,8 +2,9 @@ import 'package:go_router/go_router.dart';
 import 'package:khatabookn/views/auth/forgot_pass.dart';
 import 'package:khatabookn/views/auth/landing_screen.dart';
 import 'package:khatabookn/views/auth/otp_screen.dart';
+import 'package:khatabookn/views/auth/set_new_pass.dart';
 import 'package:khatabookn/views/auth/signin.dart';
-import 'package:khatabookn/views/auth/singup.dart';
+import 'package:khatabookn/views/auth/signup.dart';
 import 'package:khatabookn/views/home/home_screen.dart';
 import 'package:khatabookn/views/splash/splash.dart';
 
@@ -15,6 +16,7 @@ class MyRouter {
   static const String splash = 'splash';
   static const String otp = 'otp';
   static const String forgotPass = 'forgotPass';
+  static const String newPass = 'newPass';
   // static const String selectUser = 'select-user';
   // static const String transaction = 'transaction';
   // static const String methodScreen = 'methodScreen';
@@ -60,6 +62,11 @@ class MyRouter {
         path: '/$forgotPass',
         name: forgotPass,
         builder: (context, state) => const ForgotPassScreen(),
+      ),
+          GoRoute(
+        path: '/$newPass',
+        name: newPass,
+        builder: (context, state) => const SetNewPasswordScreen(),
       ),
       // GoRoute(
       //   path: '/$transaction/:custId/:type',

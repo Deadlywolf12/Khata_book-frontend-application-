@@ -10,6 +10,8 @@ class AppTheme {
   static const Color textPrimary = Colors.white;
   static const Color textSecondary = Color(0xFFA1A1AA); // neutral grey
   static const Color accentColor = Color(0xFFF43F5E); // same as primary for brand consistency
+  static const Color green = Color.fromARGB(255, 0, 255, 72); // same as primary for brand consistency
+  static const Color red = Color.fromARGB(255, 255, 0, 0); // same as primary for brand consistency
 
   static const Color white = Colors.white;
   static const Color grey = Color(0xFF9CA3AF);

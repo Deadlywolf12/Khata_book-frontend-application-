@@ -51,7 +51,9 @@ class LandingScreen extends StatelessWidget {
 
               CustomButton(
                 height: 60,
-                onTap: () {},
+                onTap: () { Go.named(context,MyRouter.signup);
+
+                },
                 borderRadius: BorderRadius.all(Radius.circular(20)),
                 child: Text(
 

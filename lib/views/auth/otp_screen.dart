@@ -1,6 +1,8 @@
 import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:khatabookn/route_structure/go_navigator.dart';
+import 'package:khatabookn/route_structure/go_router.dart';
 import 'package:khatabookn/theme/colors.dart';
 import 'package:khatabookn/theme/spacing.dart';
 
@@ -12,8 +14,10 @@ class OtpVerificationScreen extends StatefulWidget {
 }
 
 class _OtpVerificationScreenState extends State<OtpVerificationScreen> {
-  final List<TextEditingController> _otpControllers =
-      List.generate(6, (_) => TextEditingController());
+  final List<TextEditingController> _otpControllers = List.generate(
+    6,
+    (_) => TextEditingController(),
+  );
 
   Timer? _timer;
   int _secondsRemaining = 60;
@@ -39,12 +43,6 @@ class _OtpVerificationScreenState extends State<OtpVerificationScreen> {
         timer.cancel();
       }
     });
-  }
-
-  void _clearAllFields() {
-    for (final controller in _otpControllers) {
-      controller.clear();
-    }
   }
 
   Future<void> _pasteCode() async {
@@ -157,7 +155,6 @@ class _OtpVerificationScreenState extends State<OtpVerificationScreen> {
                           color: AppTheme.primaryColor,
                           fontWeight: FontWeight.bold,
                           fontSize: 15,
-                          
                         ),
                       ),
                     ),
@@ -167,10 +164,7 @@ class _OtpVerificationScreenState extends State<OtpVerificationScreen> {
 
                   const Text(
                     "Didn’t receive the code?",
-                    style: TextStyle(
-                      color: AppTheme.grey,
-                      fontSize: 14,
-                    ),
+                    style: TextStyle(color: AppTheme.grey, fontSize: 14),
                   ),
 
                   10.kH,
@@ -202,10 +196,7 @@ class _OtpVerificationScreenState extends State<OtpVerificationScreen> {
                     _isTimerRunning
                         ? "Resend available in ${_secondsRemaining}s"
                         : "You can resend now",
-                    style: const TextStyle(
-                      color: AppTheme.grey,
-                      fontSize: 14,
-                    ),
+                    style: const TextStyle(color: AppTheme.grey, fontSize: 14),
                   ),
 
                   40.kH,
@@ -216,6 +207,8 @@ class _OtpVerificationScreenState extends State<OtpVerificationScreen> {
                     child: ElevatedButton(
                       onPressed: () {
                         // TODO: verify OTP logic
+
+                        Go.named(context, MyRouter.newPass);
                         final otp = _otpControllers.map((e) => e.text).join();
                         debugPrint("Entered OTP: $otp");
                       },
@@ -234,8 +227,6 @@ class _OtpVerificationScreenState extends State<OtpVerificationScreen> {
                   ),
 
                   15.kH,
-
-             
                 ],
               ),
             ),
