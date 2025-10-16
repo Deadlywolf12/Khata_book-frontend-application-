@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 
 import 'package:khatabookn/route_structure/go_navigator.dart';
 import 'package:khatabookn/route_structure/go_router.dart';
@@ -106,7 +107,8 @@ class _SetNewPasswordScreenState extends State<SetNewPasswordScreen> {
                         width: double.infinity,
                         child: ElevatedButton(
                           onPressed: () {
-                            Go.named(context, MyRouter.home);
+                          context.go('/home');
+
                           },
                           style: ElevatedButton.styleFrom(
                             backgroundColor: AppTheme.primaryColor,

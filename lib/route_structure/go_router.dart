@@ -1,4 +1,8 @@
+
 import 'package:go_router/go_router.dart';
+import 'package:khatabookn/views/add/add_trans.dart';
+import 'package:khatabookn/views/analytics/analytics.dart';
+
 import 'package:khatabookn/views/auth/forgot_pass.dart';
 import 'package:khatabookn/views/auth/landing_screen.dart';
 import 'package:khatabookn/views/auth/otp_screen.dart';
@@ -6,7 +10,13 @@ import 'package:khatabookn/views/auth/set_new_pass.dart';
 import 'package:khatabookn/views/auth/signin.dart';
 import 'package:khatabookn/views/auth/signup.dart';
 import 'package:khatabookn/views/home/home_screen.dart';
+import 'package:khatabookn/views/loans/loans.dart';
+
+import 'package:khatabookn/views/navbar/app_scaffold.dart';
+import 'package:khatabookn/views/settings/settings.dart';
+
 import 'package:khatabookn/views/splash/splash.dart';
+
 
 class MyRouter {
   static const String home = 'home';
@@ -17,90 +27,58 @@ class MyRouter {
   static const String otp = 'otp';
   static const String forgotPass = 'forgotPass';
   static const String newPass = 'newPass';
-  // static const String selectUser = 'select-user';
-  // static const String transaction = 'transaction';
-  // static const String methodScreen = 'methodScreen';
-  // static const String transactionDone = 'transaction-done';
+  static const String app = 'app';
 
   static final GoRouter router = GoRouter(
     initialLocation: '/$splash',
-   
+
     routes: [
+      /// -------------------
+      /// 🔹 Auth & Splash Routes
+      /// -------------------
       GoRoute(
         path: '/$splash',
         name: splash,
         builder: (context, state) => const SplashScreen(),
       ),
-      
-     
       GoRoute(
-        path: '/$home',
-        name: home,
-        builder: (context, state) => const HomeScreen(),
-      ),
-       GoRoute(
         path: '/$landing',
         name: landing,
         builder: (context, state) => const LandingScreen(),
       ),
-         GoRoute(
+      GoRoute(
         path: '/$signin',
         name: signin,
         builder: (context, state) => const SignInScreen(),
       ),
-   GoRoute(
+      GoRoute(
         path: '/$signup',
         name: signup,
         builder: (context, state) => const SignUpScreen(),
       ),
-       GoRoute(
+      GoRoute(
         path: '/$otp',
         name: otp,
         builder: (context, state) => const OtpVerificationScreen(),
       ),
-         GoRoute(
+      GoRoute(
         path: '/$forgotPass',
         name: forgotPass,
         builder: (context, state) => const ForgotPassScreen(),
       ),
-          GoRoute(
+      GoRoute(
         path: '/$newPass',
         name: newPass,
         builder: (context, state) => const SetNewPasswordScreen(),
       ),
-      // GoRoute(
-      //   path: '/$transaction/:custId/:type',
-      //   name: transaction,
-      //   builder: (context, state) {
-      //     final custId = state.pathParameters['custId']!;
-      //     final type = state.pathParameters['type']!;
-      //     return SimulateTransactionScreen(custId: custId, type: type);
-      //   },
-      // ),
-      // GoRoute(
-      //   path: '/$methodScreen/:custId/:name',
-      //   name: methodScreen,
-      //   builder: (context, state) {
-      //     final custId = state.pathParameters['custId']!;
-      //     final name = state.pathParameters['name']!;
-      //     return TransactionMethodScreen(custId: custId, name: name);
-      //   },
-      // ),
-      // GoRoute(
-      //   path: '/$transactionDone/:image/:custId',
-      //   name: transactionDone,
-      //   builder: (context, state) {
-      //     final transaction = state.extra as Transaction;
-      //     final image = state.pathParameters['image']!;
-      //     final custId = state.pathParameters['custId']!;
-      //     return TransactionDonePage(
-      //       tx: transaction,
-      //       imagePath: image,
-      //       custId: custId,
-      //     );
-      //   },
-      // ),
- 
+   GoRoute(
+      path: '/home',
+      builder: (context, state) => const NavigationHandler(),
+    ),
+   
+
+   
+
     ],
   );
 }
