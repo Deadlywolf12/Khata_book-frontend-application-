@@ -24,7 +24,7 @@ class DailyAvgSpendingCard extends StatelessWidget {
               style: TextStyle(
                 fontSize: 18,
                 fontWeight: FontWeight.w600,
-                color: AppTheme.white,
+                color: AppTheme.grey,
               ),
             ),
             const SizedBox(height: 12),

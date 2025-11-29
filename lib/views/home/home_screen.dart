@@ -2,10 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:khatabookn/theme/colors.dart';
 import 'package:khatabookn/theme/spacing.dart';
 import 'package:khatabookn/widgets/custom_button.dart';
-import 'package:khatabookn/widgets/daily%20_chart.dart';
+import 'package:khatabookn/views/home/widgets/daily%20_chart.dart';
 
 import 'package:khatabookn/widgets/filled_box.dart';
-import 'package:khatabookn/widgets/horizontal_bar.dart';
+import 'package:khatabookn/views/home/widgets/horizontal_bar.dart';
 import 'package:lucide_icons/lucide_icons.dart';
 
 class HomeScreen extends StatelessWidget {

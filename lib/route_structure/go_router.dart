@@ -4,7 +4,7 @@ import 'package:khatabookn/views/add/add_trans.dart';
 import 'package:khatabookn/views/analytics/analytics.dart';
 
 import 'package:khatabookn/views/auth/forgot_pass.dart';
-import 'package:khatabookn/views/auth/landing_screen.dart';
+import 'package:khatabookn/views/landing/landing_screen.dart';
 import 'package:khatabookn/views/auth/otp_screen.dart';
 import 'package:khatabookn/views/auth/set_new_pass.dart';
 import 'package:khatabookn/views/auth/signin.dart';

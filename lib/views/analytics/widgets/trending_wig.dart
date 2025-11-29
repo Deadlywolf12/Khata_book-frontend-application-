@@ -5,17 +5,20 @@ import 'package:khatabookn/theme/spacing.dart';
 import 'package:khatabookn/widgets/filled_box.dart';
 import 'package:lucide_icons/lucide_icons.dart';
 
-class SpendingOverView extends StatelessWidget {
+class SpendingTrendLine extends StatelessWidget {
   final List<double> values;
   final List<String> days;
   final String subtitle;
-  const SpendingOverView({super.key, required this.values, required this.days, required this.subtitle});
+
+  const SpendingTrendLine({
+    super.key,
+    required this.values,
+    required this.days,
+    required this.subtitle,
+  });
 
   @override
   Widget build(BuildContext context) {
-
-   
-
     return FilledBox(
       color: AppTheme.cardColor,
       borderRadius: const BorderRadius.all(Radius.circular(20)),
@@ -24,53 +27,20 @@ class SpendingOverView extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Row(
-              children: [
-                Text(
-                  "Spending Overview",
-                  style: TextStyle(
-                    fontSize: 18,
-                    fontWeight: FontWeight.w600,
-                    color: AppTheme.grey,
-                  ),
-                ),
-                Spacer(),
-                Icon(LucideIcons.trendingUp,color: AppTheme.green,),
-                10.kW,
-                  Text(
-                  "+12",
-                  style: TextStyle(
-                    fontSize: 18,
-                    fontWeight: FontWeight.w600,
-                    color: AppTheme.green,
-                  ),
-                ),
-              ],
+            Text(
+              "Spending Trend",
+              style: TextStyle(
+                fontSize: 18,
+                fontWeight: FontWeight.w600,
+                color: AppTheme.grey,
+              ),
             ),
-            const SizedBox(height: 12),
-             Text(
-                  "\$2,500.00",
-                  style: TextStyle(
-                    fontSize: 28,
-                    fontWeight: FontWeight.w600,
-                    color: AppTheme.white,
-                  ),
-                ), Text(
-                  subtitle,
-                  style: TextStyle(
-                    fontSize: 18,
-                    fontWeight: FontWeight.w600,
-                    color: AppTheme.grey,
-                  ),
-                ),
-
-
-
-            // Animated Bar Chart
+            25.kH,
+            // Animated Line Chart
             SizedBox(
               height: 220,
-              child: BarChart(
-                BarChartData(
+              child: LineChart(
+                LineChartData(
                   borderData: FlBorderData(show: false),
                   gridData: const FlGridData(show: false),
                   titlesData: FlTitlesData(
@@ -86,6 +56,7 @@ class SpendingOverView extends StatelessWidget {
                     bottomTitles: AxisTitles(
                       sideTitles: SideTitles(
                         showTitles: true,
+                        interval: 1, // ensures one label per day
                         getTitlesWidget: (value, meta) {
                           final index = value.toInt();
                           if (index < 0 || index >= days.length) {
@@ -105,25 +76,46 @@ class SpendingOverView extends StatelessWidget {
                       ),
                     ),
                   ),
-                  barGroups: List.generate(
-                    days.length,
-                    (i) => BarChartGroupData(
-                      x: i,
-                      barRods: [
-                        BarChartRodData(
-                          toY: values[i],
-                          color: AppTheme.primaryColor,
-                          width: 16,
-                          borderRadius: const BorderRadius.vertical(
-                            top: Radius.circular(8),
-                          ),
+                  lineBarsData: [
+                    LineChartBarData(
+                      spots: List.generate(
+                        values.length,
+                        (i) => FlSpot(i.toDouble(), values[i]),
+                      ),
+                      isCurved: true,
+                      color: AppTheme.primaryColor,
+                      barWidth: 3,
+                      isStrokeCapRound: true,
+                      dotData: FlDotData(
+                        show: true,
+                        getDotPainter: (spot, percent, barData, index) {
+                          return FlDotCirclePainter(
+                            radius: 4,
+                            color: AppTheme.primaryColor,
+                            strokeWidth: 2,
+                            strokeColor: AppTheme.cardColor,
+                          );
+                        },
+                      ),
+                      belowBarData: BarAreaData(
+                        show: true,
+                        gradient: LinearGradient(
+                          colors: [
+                            AppTheme.primaryColor.withOpacity(0.3),
+                            AppTheme.primaryColor.withOpacity(0.0),
+                          ],
+                          begin: Alignment.topCenter,
+                          end: Alignment.bottomCenter,
                         ),
-                      ],
+                      ),
                     ),
-                  ),
+                  ],
+                  minX: 0,
+                  maxX: (values.length - 1).toDouble(),
+                  minY: 0,
+                  maxY: values.reduce((a, b) => a > b ? a : b) + 5, // adjust top
                 ),
-
-                /// 👇 Add animation here
+                // Animation
                 duration: const Duration(milliseconds: 1200),
                 curve: Curves.easeOutCubic,
               ),
