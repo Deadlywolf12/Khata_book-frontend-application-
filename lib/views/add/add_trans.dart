@@ -62,7 +62,7 @@ class _AddNewTransactionScreenState extends State<AddNewTransactionScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: AppTheme.cardColor,
+    
         elevation: 0,
         title: const Text('Add Transaction'),
         centerTitle: true,
@@ -120,7 +120,7 @@ class _AddNewTransactionScreenState extends State<AddNewTransactionScreen> {
                         value: _selectedCategory,
                         hint: const Text(
                           'Select Category',
-                          style: TextStyle(color: Colors.white70),
+                          style: TextStyle(color: Colors.white38),
                         ),
                         dropdownColor: AppTheme.cardColor,
                         isExpanded: true,
@@ -183,7 +183,7 @@ class _AddNewTransactionScreenState extends State<AddNewTransactionScreen> {
                 style: const TextStyle(color: Colors.white),
                 decoration: const InputDecoration(
                   hintText: 'Notes',
-                  hintStyle: TextStyle(color: Colors.white70),
+                  hintStyle: TextStyle(color: Colors.white38),
                   border: InputBorder.none,
                 ),
               ),
@@ -191,7 +191,7 @@ class _AddNewTransactionScreenState extends State<AddNewTransactionScreen> {
 
             35.kH,
 
-            // ✅ Add Transaction Button
+           
             SizedBox(
               width: double.infinity,
               child: ElevatedButton(

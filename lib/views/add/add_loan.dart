@@ -62,7 +62,7 @@ class _AddLoanScreenState extends State<AddLoanScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: AppTheme.cardColor,
+   
         elevation: 0,
         title: const Text('Add Loan'),
         centerTitle: true,
@@ -106,50 +106,26 @@ class _AddLoanScreenState extends State<AddLoanScreen> {
             ),
 
             25.kH,
-
-            // 📂 Category Dropdown
-            Row(
-              children: [
-                Expanded(
-                  child: FilledBox(
-                    padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 10),
-                    color: AppTheme.cardColor,
-                    borderRadius: BorderRadius.circular(12),
-                    child: DropdownButtonHideUnderline(
-                      child: DropdownButton<String>(
-                        value: _selectedCategory,
-                        hint: const Text(
-                          'Select Category',
-                          style: TextStyle(color: Colors.white70),
-                        ),
-                        dropdownColor: AppTheme.cardColor,
-                        isExpanded: true,
-                        icon: const Icon(Icons.arrow_drop_down, color: Colors.white),
-                        items: _categories.map((cat) {
-                          return DropdownMenuItem<String>(
-                            value: cat,
-                            child: Text(
-                              cat,
-                              style: const TextStyle(color: Colors.white),
-                            ),
-                          );
-                        }).toList(),
-                        onChanged: (val) => setState(() => _selectedCategory = val),
-                      ),
-                    ),
-                  ),
+               //person
+            FilledBox(
+              color: AppTheme.cardColor,
+              borderRadius: BorderRadius.circular(12),
+              padding: const EdgeInsets.symmetric(horizontal: 16),
+              child: TextField(
+                controller: _noteController,
+                maxLines: 1,
+                style: const TextStyle(color: Colors.white),
+                decoration: const InputDecoration(
+                  hintText: 'From whom, eg, John doe',
+                  hintStyle: TextStyle(color: Colors.white38),
+                  border: InputBorder.none,
                 ),
-                10.kW,
-                FilledBox(
-                  child: Icon(LucideIcons.plusCircle, color: AppTheme.grey, size: 30),
-                  color: AppTheme.cardColor,
-                  padding: const EdgeInsets.all(17),
-                ),
-              ],
+              ),
             ),
 
-            25.kH,
 
+       
+  25.kH,
             // 📅 Date Picker
             GestureDetector(
               onTap: _pickDate,
@@ -172,7 +148,7 @@ class _AddLoanScreenState extends State<AddLoanScreen> {
 
             25.kH,
 
-            // 📝 Notes
+            //reason
             FilledBox(
               color: AppTheme.cardColor,
               borderRadius: BorderRadius.circular(12),
@@ -182,8 +158,8 @@ class _AddLoanScreenState extends State<AddLoanScreen> {
                 maxLines: 4,
                 style: const TextStyle(color: Colors.white),
                 decoration: const InputDecoration(
-                  hintText: 'Notes',
-                  hintStyle: TextStyle(color: Colors.white70),
+                  hintText: 'Reason',
+                  hintStyle: TextStyle(color: Colors.white38),
                   border: InputBorder.none,
                 ),
               ),
@@ -191,7 +167,7 @@ class _AddLoanScreenState extends State<AddLoanScreen> {
 
             35.kH,
 
-            // ✅ Add Transaction Button
+            // Add Loan Button
             SizedBox(
               width: double.infinity,
               child: ElevatedButton(

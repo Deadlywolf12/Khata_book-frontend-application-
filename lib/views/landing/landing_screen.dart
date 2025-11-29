@@ -58,7 +58,7 @@ class LandingScreen extends StatelessWidget {
                 child: Text(
 
                   "Sign Up",
-                  style: TextStyle(fontSize: 22, fontWeight: FontWeight.bold),
+                  style: TextStyle(fontSize: 22, fontWeight: FontWeight.bold,color:AppTheme.white),
                 ),
               ),
 
