@@ -52,7 +52,7 @@ class _SetNewPasswordScreenState extends State<SetNewPasswordScreen> {
                       CustomTextField(
                         textInputType: TextInputType.text,
                         hintText: 'New password',
-                        fillColor: AppTheme.cardColor,
+                        fillColor: Theme.of(context).cardColor,
                         filled: true,
                         hintTextStyle: const TextStyle(color: AppTheme.grey),
                         maxLines: 1,
@@ -79,7 +79,7 @@ class _SetNewPasswordScreenState extends State<SetNewPasswordScreen> {
                       CustomTextField(
                         textInputType: TextInputType.text,
                         hintText: 'Confirm password',
-                        fillColor: AppTheme.cardColor,
+                        fillColor: Theme.of(context).cardColor,
                         filled: true,
                         hintTextStyle: const TextStyle(color: AppTheme.grey),
                         maxLines: 1,

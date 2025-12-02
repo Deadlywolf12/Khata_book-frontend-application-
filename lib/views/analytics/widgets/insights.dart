@@ -25,7 +25,7 @@ class InsightCard extends StatelessWidget {
     final effectiveAccentColor = accentColor ?? AppTheme.primaryColor;
 
     return FilledBox(
-      color: AppTheme.cardColor,
+      color: Theme.of(context).cardColor,
       borderRadius: const BorderRadius.all(Radius.circular(20)),
       child: Column(
         mainAxisAlignment: MainAxisAlignment.start,
@@ -90,7 +90,7 @@ class InsightCard extends StatelessWidget {
                           style: TextStyle(
                             fontSize: 16,
                             fontWeight: FontWeight.w600,
-                            color: AppTheme.white,
+                           
                           ),
                         ),
                         const SizedBox(height: 6),

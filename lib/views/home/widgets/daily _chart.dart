@@ -12,7 +12,7 @@ class DailyAvgSpendingCard extends StatelessWidget {
     final values = [50.0, 70.0, 40.0, 90.0, 60.0, 30.0, 80.0]; // sample data
 
     return FilledBox(
-      color: AppTheme.cardColor,
+      color: Theme.of(context).cardColor,
       borderRadius: const BorderRadius.all(Radius.circular(20)),
       child: Padding(
         padding: const EdgeInsets.all(16.0),

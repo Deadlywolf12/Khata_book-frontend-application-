@@ -35,16 +35,18 @@ class AppTheme {
     },
   );
 
-  // ✅ LIGHT THEME
+  //  LIGHT THEME
   static ThemeData get lightTheme => ThemeData(
         brightness: Brightness.light,
         primarySwatch: primarySwatch,
         primaryColor: primaryColor,
         scaffoldBackgroundColor: backgroundLight,
-        cardColor: Colors.white,
+        cardColor: const Color.fromARGB(7, 0, 0, 0),
+        disabledColor:  const Color.fromARGB(100, 0, 0, 0),
         appBarTheme: const AppBarTheme(
-          backgroundColor: primaryColor,
-          foregroundColor: Colors.white,
+          backgroundColor: backgroundLight,
+          foregroundColor: primaryColor,
+          surfaceTintColor: Colors.transparent,
           elevation: 0,
         ),
         textTheme: const TextTheme(
@@ -64,7 +66,7 @@ class AppTheme {
         ),
       );
 
-  // ✅ DARK THEME
+  //  DARK THEME
   static ThemeData get darkTheme => ThemeData(
         brightness: Brightness.dark,
         primarySwatch: primarySwatch,
@@ -74,6 +76,7 @@ class AppTheme {
         appBarTheme: const AppBarTheme(
           backgroundColor: backgroundDark,
           foregroundColor: Colors.white,
+          surfaceTintColor: Colors.transparent,
           elevation: 0,
         ),
         textTheme: const TextTheme(

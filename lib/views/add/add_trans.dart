@@ -41,8 +41,8 @@ class _AddNewTransactionScreenState extends State<AddNewTransactionScreen> {
           data: Theme.of(context).copyWith(
             colorScheme: ColorScheme.dark(
               primary: AppTheme.primaryColor,
-              surface: AppTheme.cardColor,
-              onSurface: Colors.white,
+              surface: AppTheme.white,
+              onSurface: Colors.black,
             ),
           ),
           child: child!,
@@ -73,7 +73,7 @@ class _AddNewTransactionScreenState extends State<AddNewTransactionScreen> {
           children: [
             // 🔹 Tabs
             FilledBox(
-              color: AppTheme.cardColor,
+              color: Theme.of(context).cardColor,
               borderRadius: BorderRadius.circular(12),
               padding: EdgeInsets.zero,
               child: Row(
@@ -91,17 +91,22 @@ class _AddNewTransactionScreenState extends State<AddNewTransactionScreen> {
               textInputType: const TextInputType.numberWithOptions(),
               hintText: "\$0",
               hintTextStyle: TextStyle(fontSize: 52, color: AppTheme.grey),
-              fillColor: AppTheme.cardColor,
+              fillColor: Theme.of(context).cardColor,
               filled: true,
               padding: const EdgeInsets.all(25),
               focusedBorder: const OutlineInputBorder(
+                
                 borderRadius: BorderRadius.all(Radius.circular(20)),
               ),
               enabledBorder: const OutlineInputBorder(
                 borderRadius: BorderRadius.all(Radius.circular(20)),
               ),
+              enabledBorderColor: Theme.of(context).cardColor,
+              focusedBorderColor: Theme.of(context).cardColor,
+             
+            
               cursorTextStyle:
-                  TextStyle(fontSize: 52, color: AppTheme.white),
+                  TextStyle(fontSize: 52),
               controller: _amountController,
             ),
 
@@ -113,24 +118,27 @@ class _AddNewTransactionScreenState extends State<AddNewTransactionScreen> {
                 Expanded(
                   child: FilledBox(
                     padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 10),
-                    color: AppTheme.cardColor,
+                    color: Theme.of(context).cardColor,
                     borderRadius: BorderRadius.circular(12),
                     child: DropdownButtonHideUnderline(
                       child: DropdownButton<String>(
                         value: _selectedCategory,
-                        hint: const Text(
+                        hint:  Text(
                           'Select Category',
-                          style: TextStyle(color: Colors.white38),
+                          // style: TextStyle(color:Theme.of(context).disabledColor),
                         ),
-                        dropdownColor: AppTheme.cardColor,
+                        dropdownColor:AppTheme.cardColor,
                         isExpanded: true,
-                        icon: const Icon(Icons.arrow_drop_down, color: Colors.white),
+                        icon: const Icon(Icons.arrow_drop_down),
                         items: _categories.map((cat) {
                           return DropdownMenuItem<String>(
                             value: cat,
                             child: Text(
                               cat,
-                              style: const TextStyle(color: Colors.white),
+                              style: TextStyle(color: AppTheme.primaryColor),
+                           
+              
+                        
                             ),
                           );
                         }).toList(),
@@ -142,7 +150,7 @@ class _AddNewTransactionScreenState extends State<AddNewTransactionScreen> {
                 10.kW,
                 FilledBox(
                   child: Icon(LucideIcons.plusCircle, color: AppTheme.grey, size: 30),
-                  color: AppTheme.cardColor,
+                  color: Theme.of(context).cardColor,
                   padding: const EdgeInsets.all(17),
                 ),
               ],
@@ -154,7 +162,7 @@ class _AddNewTransactionScreenState extends State<AddNewTransactionScreen> {
             GestureDetector(
               onTap: _pickDate,
               child: FilledBox(
-                color: AppTheme.cardColor,
+                color:Theme.of(context).cardColor,
                 borderRadius: BorderRadius.circular(12),
                 padding: const EdgeInsets.symmetric(vertical: 16, horizontal: 16),
                 child: Row(
@@ -162,9 +170,9 @@ class _AddNewTransactionScreenState extends State<AddNewTransactionScreen> {
                   children: [
                     Text(
                       DateFormat('dd MMM yyyy').format(_selectedDate),
-                      style: const TextStyle(color: Colors.white, fontSize: 16),
+                      style: const TextStyle(fontSize: 16),
                     ),
-                    const Icon(Icons.calendar_today, color: Colors.white70),
+                     Icon(Icons.calendar_today, color: Theme.of(context).disabledColor,),
                   ],
                 ),
               ),
@@ -174,16 +182,16 @@ class _AddNewTransactionScreenState extends State<AddNewTransactionScreen> {
 
             // 📝 Notes
             FilledBox(
-              color: AppTheme.cardColor,
+              color: Theme.of(context).cardColor,
               borderRadius: BorderRadius.circular(12),
               padding: const EdgeInsets.symmetric(horizontal: 16),
               child: TextField(
                 controller: _noteController,
                 maxLines: 4,
-                style: const TextStyle(color: Colors.white),
-                decoration: const InputDecoration(
+             
+                decoration:  InputDecoration(
                   hintText: 'Notes',
-                  hintStyle: TextStyle(color: Colors.white38),
+                  hintStyle: TextStyle(color: Theme.of(context).disabledColor,),
                   border: InputBorder.none,
                 ),
               ),
@@ -234,7 +242,7 @@ class _AddNewTransactionScreenState extends State<AddNewTransactionScreen> {
           child: Text(
             title,
             style: TextStyle(
-              color: active ? Colors.white : Colors.white70,
+              color: active ? Colors.white : Theme.of(context).disabledColor,
               fontWeight: FontWeight.w600,
               fontSize: 16,
             ),

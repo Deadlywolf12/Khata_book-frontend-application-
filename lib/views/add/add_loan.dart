@@ -41,8 +41,8 @@ class _AddLoanScreenState extends State<AddLoanScreen> {
           data: Theme.of(context).copyWith(
             colorScheme: ColorScheme.dark(
               primary: AppTheme.primaryColor,
-              surface: AppTheme.cardColor,
-              onSurface: Colors.white,
+              surface: AppTheme.white,
+              onSurface: Colors.black,
             ),
           ),
           child: child!,
@@ -73,7 +73,7 @@ class _AddLoanScreenState extends State<AddLoanScreen> {
           children: [
             // 🔹 Tabs
             FilledBox(
-              color: AppTheme.cardColor,
+              color: Theme.of(context).cardColor,
               borderRadius: BorderRadius.circular(12),
               padding: EdgeInsets.zero,
               child: Row(
@@ -91,7 +91,7 @@ class _AddLoanScreenState extends State<AddLoanScreen> {
               textInputType: const TextInputType.numberWithOptions(),
               hintText: "\$0",
               hintTextStyle: TextStyle(fontSize: 52, color: AppTheme.grey),
-              fillColor: AppTheme.cardColor,
+              fillColor: Theme.of(context).cardColor,
               filled: true,
               padding: const EdgeInsets.all(25),
               focusedBorder: const OutlineInputBorder(
@@ -101,23 +101,23 @@ class _AddLoanScreenState extends State<AddLoanScreen> {
                 borderRadius: BorderRadius.all(Radius.circular(20)),
               ),
               cursorTextStyle:
-                  TextStyle(fontSize: 52, color: AppTheme.white),
+                  TextStyle(fontSize: 52),
               controller: _amountController,
             ),
 
             25.kH,
                //person
             FilledBox(
-              color: AppTheme.cardColor,
+              color: Theme.of(context).cardColor,
               borderRadius: BorderRadius.circular(12),
               padding: const EdgeInsets.symmetric(horizontal: 16),
               child: TextField(
                 controller: _noteController,
                 maxLines: 1,
-                style: const TextStyle(color: Colors.white),
-                decoration: const InputDecoration(
+               
+                decoration:  InputDecoration(
                   hintText: 'From whom, eg, John doe',
-                  hintStyle: TextStyle(color: Colors.white38),
+                  hintStyle: TextStyle(color: Theme.of(context).disabledColor),
                   border: InputBorder.none,
                 ),
               ),
@@ -130,7 +130,7 @@ class _AddLoanScreenState extends State<AddLoanScreen> {
             GestureDetector(
               onTap: _pickDate,
               child: FilledBox(
-                color: AppTheme.cardColor,
+                color: Theme.of(context).cardColor,
                 borderRadius: BorderRadius.circular(12),
                 padding: const EdgeInsets.symmetric(vertical: 16, horizontal: 16),
                 child: Row(
@@ -138,9 +138,9 @@ class _AddLoanScreenState extends State<AddLoanScreen> {
                   children: [
                     Text(
                       DateFormat('dd MMM yyyy').format(_selectedDate),
-                      style: const TextStyle(color: Colors.white, fontSize: 16),
+                      style: const TextStyle(fontSize: 16),
                     ),
-                    const Icon(Icons.calendar_today, color: Colors.white70),
+                     Icon(Icons.calendar_today, color: Theme.of(context).disabledColor),
                   ],
                 ),
               ),
@@ -150,16 +150,16 @@ class _AddLoanScreenState extends State<AddLoanScreen> {
 
             //reason
             FilledBox(
-              color: AppTheme.cardColor,
+              color: Theme.of(context).cardColor,
               borderRadius: BorderRadius.circular(12),
               padding: const EdgeInsets.symmetric(horizontal: 16),
               child: TextField(
                 controller: _noteController,
                 maxLines: 4,
                 style: const TextStyle(color: Colors.white),
-                decoration: const InputDecoration(
+                decoration:  InputDecoration(
                   hintText: 'Reason',
-                  hintStyle: TextStyle(color: Colors.white38),
+                  hintStyle: TextStyle(color: Theme.of(context).disabledColor),
                   border: InputBorder.none,
                 ),
               ),
@@ -210,7 +210,7 @@ class _AddLoanScreenState extends State<AddLoanScreen> {
           child: Text(
             title,
             style: TextStyle(
-              color: active ? Colors.white : Colors.white70,
+              color: active ? Colors.white : Theme.of(context).disabledColor,
               fontWeight: FontWeight.w600,
               fontSize: 16,
             ),

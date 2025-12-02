@@ -56,7 +56,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                 CustomTextField(
                   textInputType: TextInputType.emailAddress,
                   hintText: 'Email or username',
-                  fillColor: AppTheme.cardColor,
+                  fillColor: Theme.of(context).cardColor,
                   filled: true,
                   hintTextStyle: const TextStyle(color: AppTheme.grey),
                   maxLines: 1,
@@ -67,7 +67,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                 CustomTextField(
                   textInputType: TextInputType.text,
                   hintText: 'Password',
-                  fillColor: AppTheme.cardColor,
+                  fillColor:Theme.of(context).cardColor,
                   filled: true,
                   hintTextStyle: const TextStyle(color: AppTheme.grey),
                   maxLines: 1,
@@ -91,7 +91,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                   CustomTextField(
                   textInputType: TextInputType.text,
                   hintText: 'Confirm Password',
-                  fillColor: AppTheme.cardColor,
+                  fillColor: Theme.of(context).cardColor,
                   filled: true,
                   hintTextStyle: const TextStyle(color: AppTheme.grey),
                   maxLines: 1,

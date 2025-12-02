@@ -43,7 +43,7 @@ class _CategorySpendingCardState extends State<CategorySpendingCard>
         : data.values.reduce((a, b) => a > b ? a : b);
 
     return FilledBox(
-      color: AppTheme.cardColor,
+      color: Theme.of(context).cardColor,
       borderRadius: const BorderRadius.all(Radius.circular(20)),
       child: Padding(
         padding: const EdgeInsets.all(16.0),
@@ -83,7 +83,7 @@ class _CategorySpendingCardState extends State<CategorySpendingCard>
                                   style: TextStyle(
                                     fontSize: 14,
                                     fontWeight: FontWeight.w500,
-                                    color: AppTheme.white,
+                                    
                                   ),
                                 ),
                               ),
@@ -94,7 +94,7 @@ class _CategorySpendingCardState extends State<CategorySpendingCard>
                                   textAlign: TextAlign.right,
                                   style: TextStyle(
                                     fontSize: 13,
-                                    color: AppTheme.grey,
+                                  
                                   ),
                                 ),
                               ),

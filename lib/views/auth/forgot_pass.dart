@@ -54,7 +54,7 @@ class _ForgotPassScreenState extends State<ForgotPassScreen> {
                 CustomTextField(
                   textInputType: TextInputType.emailAddress,
                   hintText: 'Enter your email',
-                  fillColor: AppTheme.cardColor,
+                  fillColor: Theme.of(context).cardColor,
                   filled: true,
                   hintTextStyle: const TextStyle(color: AppTheme.grey),
                   maxLines: 1,

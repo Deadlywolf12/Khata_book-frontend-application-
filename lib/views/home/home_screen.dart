@@ -49,7 +49,7 @@ class HomeScreen extends StatelessWidget {
                     padding: EdgeInsets.zero,
                     width: 50,
                     height: 50,
-                    color: AppTheme.cardColor,
+                    color: Theme.of(context).cardColor,
                     child: Center(
                       child: Icon(
                         LucideIcons.userCircle2,
@@ -66,7 +66,7 @@ class HomeScreen extends StatelessWidget {
               // 💰 Lifetime Spent
               FilledBox(
                 width: double.infinity,
-                color: AppTheme.cardColor,
+                color: Theme.of(context).cardColor,
                 borderRadius: const BorderRadius.all(Radius.circular(25)),
                 child: Column(
                   children: [
@@ -83,7 +83,7 @@ class HomeScreen extends StatelessWidget {
                       style: TextStyle(
                         fontSize: 42,
                         fontWeight: FontWeight.bold,
-                        color: AppTheme.white,
+                      
                       ),
                     ),
                   ],
@@ -97,7 +97,7 @@ class HomeScreen extends StatelessWidget {
                 children: [
                   Expanded(
                     child: FilledBox(
-                      color: AppTheme.cardColor,
+                      color: Theme.of(context).cardColor,
                       borderRadius: const BorderRadius.all(Radius.circular(20)),
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
@@ -125,7 +125,7 @@ class HomeScreen extends StatelessWidget {
                   20.kW,
                   Expanded(
                     child: FilledBox(
-                      color: AppTheme.cardColor,
+                      color: Theme.of(context).cardColor,
                       borderRadius: const BorderRadius.all(Radius.circular(20)),
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
@@ -173,7 +173,7 @@ class HomeScreen extends StatelessWidget {
               CategorySpendingCard(),
               25.kH,
               FilledBox(
-                color: AppTheme.cardColor,
+                color: Theme.of(context).cardColor,
                 borderRadius: const BorderRadius.all(Radius.circular(20)),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
@@ -191,7 +191,7 @@ class HomeScreen extends StatelessWidget {
                       style: TextStyle(
                         fontSize: 28,
                         fontWeight: FontWeight.bold,
-                        color: AppTheme.white,
+                     
                       ),
                     ),
                     10.kH,

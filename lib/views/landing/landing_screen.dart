@@ -33,7 +33,7 @@ class LandingScreen extends StatelessWidget {
                 style: TextStyle(
                   fontSize: 35,
                   fontWeight: FontWeight.bold,
-                  color: AppTheme.white,
+                  // color: AppTheme.white,
                 ),
                 textAlign: TextAlign.center,
               ),

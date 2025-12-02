@@ -20,7 +20,7 @@ class SpendingTrendLine extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return FilledBox(
-      color: AppTheme.cardColor,
+      color: Theme.of(context).cardColor,
       borderRadius: const BorderRadius.all(Radius.circular(20)),
       child: Padding(
         padding: const EdgeInsets.all(16.0),

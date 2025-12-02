@@ -54,7 +54,7 @@ class _SignInScreenState extends State<SignInScreen> {
                 CustomTextField(
                   textInputType: TextInputType.emailAddress,
                   hintText: 'Email or username',
-                  fillColor: AppTheme.cardColor,
+                  fillColor: Theme.of(context).cardColor,
                   filled: true,
                   hintTextStyle: const TextStyle(color: AppTheme.grey),
                   maxLines: 1,
@@ -65,7 +65,7 @@ class _SignInScreenState extends State<SignInScreen> {
                 CustomTextField(
                   textInputType: TextInputType.text,
                   hintText: 'Password',
-                  fillColor: AppTheme.cardColor,
+                  fillColor: Theme.of(context).cardColor,
                   filled: true,
                   hintTextStyle: const TextStyle(color: AppTheme.grey),
                   maxLines: 1,

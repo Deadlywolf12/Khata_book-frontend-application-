@@ -115,7 +115,7 @@ class _NavigationHandlerState extends State<NavigationHandler> {
             const SizedBox(height: 20),
             const Text(
               "Add Transaction Type",
-              style: TextStyle(fontSize: 18, fontWeight: FontWeight.w600),
+              style: TextStyle(fontSize: 18, fontWeight: FontWeight.w600,color: AppTheme.white),
             ),
             const SizedBox(height: 16),
             _buildOption(

@@ -17,7 +17,7 @@ class SpendingOverView extends StatelessWidget {
    
 
     return FilledBox(
-      color: AppTheme.cardColor,
+      color: Theme.of(context).cardColor,
       borderRadius: const BorderRadius.all(Radius.circular(20)),
       child: Padding(
         padding: const EdgeInsets.all(16.0),
@@ -53,7 +53,7 @@ class SpendingOverView extends StatelessWidget {
                   style: TextStyle(
                     fontSize: 28,
                     fontWeight: FontWeight.w600,
-                    color: AppTheme.white,
+                   
                   ),
                 ), Text(
                   subtitle,

@@ -31,12 +31,12 @@ class _AnalyticsScreenState extends State<AnalyticsScreen> {
       body: SingleChildScrollView(
         padding: const EdgeInsets.all(20),
         child: Padding(
-          padding: const EdgeInsets.symmetric(vertical: 30,horizontal: 8),
+          padding: const EdgeInsets.symmetric(vertical: 40,horizontal: 8),
           child: Column(
             children: [
               // 🔹 Tabs
               FilledBox(
-                color: AppTheme.cardColor,
+                color: Theme.of(context).cardColor,
                 borderRadius: BorderRadius.circular(12),
                 padding: EdgeInsets.zero,
                 child: Row(
@@ -129,7 +129,7 @@ SpendingTrendLine(values: [50.0, 70.0, 40.0, 90.0, 60.0, 30.0], days: ['First', 
           child: Text(
             title,
             style: TextStyle(
-              color: active ? Colors.white : Colors.white70,
+              color: active ? Colors.white :Theme.of(context).disabledColor,
               fontWeight: FontWeight.w600,
               fontSize: 16,
             ),

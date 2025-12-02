@@ -16,6 +16,7 @@ import 'package:khatabookn/views/navbar/navbar.dart';
 import 'package:khatabookn/views/settings/settings.dart';
 
 import 'package:khatabookn/views/splash/splash.dart';
+import 'package:khatabookn/views/storage/storage.dart';
 
 
 class MyRouter {
@@ -29,6 +30,7 @@ class MyRouter {
   static const String newPass = 'newPass';
   static const String app = 'app';
   static const String newTransaction = 'newTransaction';
+  static const String storage = 'storage';
 
   static final GoRouter router = GoRouter(
     initialLocation: '/$splash',
@@ -66,6 +68,11 @@ class MyRouter {
         path: '/$forgotPass',
         name: forgotPass,
         builder: (context, state) => const ForgotPassScreen(),
+      ),
+        GoRoute(
+        path: '/$storage',
+        name: storage,
+        builder: (context, state) => const StoragePreferenceScreen(),
       ),
       GoRoute(
         path: '/$newPass',
