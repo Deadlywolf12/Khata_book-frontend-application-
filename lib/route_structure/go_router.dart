@@ -1,5 +1,6 @@
 
 import 'package:go_router/go_router.dart';
+import 'package:khatabookn/views/add/add_loan.dart';
 import 'package:khatabookn/views/add/add_trans.dart';
 import 'package:khatabookn/views/analytics/analytics.dart';
 
@@ -10,6 +11,7 @@ import 'package:khatabookn/views/auth/set_new_pass.dart';
 import 'package:khatabookn/views/auth/signin.dart';
 import 'package:khatabookn/views/auth/signup.dart';
 import 'package:khatabookn/views/home/home_screen.dart';
+import 'package:khatabookn/views/loans/loan_dashboard.dart';
 import 'package:khatabookn/views/loans/loans.dart';
 
 import 'package:khatabookn/views/navbar/navbar.dart';
@@ -30,8 +32,10 @@ class MyRouter {
   static const String newPass = 'newPass';
   static const String app = 'app';
   static const String newTransaction = 'newTransaction';
-  static const String storage = 'storage';
+  static const String newLoan = 'newLoan';
 
+  static const String storage = 'storage';
+  static const String loanDashboard = 'loanDashboard';
   static final GoRouter router = GoRouter(
     initialLocation: '/$splash',
 
@@ -79,11 +83,28 @@ class MyRouter {
         name: newPass,
         builder: (context, state) => const SetNewPasswordScreen(),
       ),
-      // GoRoute(
-      //   path: '/$newTransaction',
-      //   name: newTransaction,
-      //   builder: (context, state) => const AddNewTransactionScreen(),
-      // ),
+       GoRoute(
+        path: '/$newLoan',
+        name: newLoan,
+        builder: (context, state) => const AddLoanScreen(),
+      ),
+      GoRoute(
+        path: '/$newTransaction',
+        name: newTransaction,
+        builder: (context, state) => const AddNewTransactionScreen(),
+      ),
+     GoRoute(
+path: '/$loanDashboard/:userName/:totalToTake/:totalToGive',
+
+  name: loanDashboard,
+  builder: (context, state) {
+    final userName = state.pathParameters['userName']!;
+    final toTake = state.pathParameters['totalToTake']!;
+    final toGive = state.pathParameters['totalToGive']!;
+    return LoanDetailScreen(userName: userName, totalToTake: toTake,totalToGive:toGive,);
+  },
+),
+
    GoRoute(
       path: '/home',
       builder: (context, state) => const NavigationHandler(),

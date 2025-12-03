@@ -41,7 +41,7 @@ class AppTheme {
         primarySwatch: primarySwatch,
         primaryColor: primaryColor,
         scaffoldBackgroundColor: backgroundLight,
-        cardColor: const Color.fromARGB(7, 0, 0, 0),
+        cardColor: const Color.fromARGB(255, 244, 243, 243),
         disabledColor:  const Color.fromARGB(100, 0, 0, 0),
         appBarTheme: const AppBarTheme(
           backgroundColor: backgroundLight,

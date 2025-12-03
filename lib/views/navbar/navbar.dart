@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:khatabookn/route_structure/go_navigator.dart';
+import 'package:khatabookn/route_structure/go_router.dart';
 import 'package:khatabookn/theme/colors.dart';
 
 import 'package:khatabookn/views/add/add_loan.dart';
@@ -124,12 +126,7 @@ class _NavigationHandlerState extends State<NavigationHandler> {
               label: "Add Expense",
               onTap: () {
                 Navigator.pop(context);
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                    builder: (_) => const AddNewTransactionScreen(),
-                  ),
-                );
+                 Go.named(context,MyRouter.newTransaction);
               },
             ),
             const SizedBox(height: 12),
@@ -139,12 +136,7 @@ class _NavigationHandlerState extends State<NavigationHandler> {
               label: "Add Loan",
               onTap: () {
                 Navigator.pop(context);
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                    builder: (_) => const AddLoanScreen(),
-                  ),
-                );
+                 Go.named(context,MyRouter.newLoan);
               },
             ),
           ],

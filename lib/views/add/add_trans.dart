@@ -127,7 +127,7 @@ class _AddNewTransactionScreenState extends State<AddNewTransactionScreen> {
                           'Select Category',
                           // style: TextStyle(color:Theme.of(context).disabledColor),
                         ),
-                        dropdownColor:AppTheme.cardColor,
+                        dropdownColor:Theme.of(context).cardColor,
                         isExpanded: true,
                         icon: const Icon(Icons.arrow_drop_down),
                         items: _categories.map((cat) {

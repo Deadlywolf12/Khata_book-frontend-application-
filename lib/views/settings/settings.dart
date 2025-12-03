@@ -51,7 +51,7 @@ isDarkMode = Provider.of<ThemeNotifier>(context,listen: false).isDarkMode;
                 style: TextStyle(
                   fontSize: 20,
                   fontWeight: FontWeight.w600,
-                  color: AppTheme.white,
+               
                 ),
               ),
               const SizedBox(height: 20),
@@ -92,11 +92,11 @@ isDarkMode = Provider.of<ThemeNotifier>(context,listen: false).isDarkMode;
           children: [
             Text(
               code,
-              style: TextStyle(
+              style: isSelected ? TextStyle(
                 fontSize: 16,
                 fontWeight: FontWeight.w600,
-                color: isSelected ? AppTheme.primaryColor : AppTheme.white,
-              ),
+                color: AppTheme.primaryColor,
+              ):Theme.of(context).textTheme.titleMedium,
             ),
             const SizedBox(width: 12),
             Text(
@@ -209,7 +209,7 @@ isDarkMode = Provider.of<ThemeNotifier>(context,listen: false).isDarkMode;
                         backgroundColor: Theme.of(context).cardColor,
                         title: Text(
                           'Clear Storage?',
-                          style: TextStyle(color: AppTheme.white),
+                          
                         ),
                         content: Text(
                           'This will clear all cached data. Are you sure?',
