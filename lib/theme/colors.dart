@@ -41,8 +41,8 @@ class AppTheme {
         primarySwatch: primarySwatch,
         primaryColor: primaryColor,
         scaffoldBackgroundColor: backgroundLight,
-        cardColor: const Color.fromARGB(255, 244, 243, 243),
-        disabledColor:  const Color.fromARGB(100, 0, 0, 0),
+        cardColor: const Color.fromARGB(255, 242, 242, 242),
+        disabledColor:  const Color.fromARGB(106, 0, 0, 0),
         appBarTheme: const AppBarTheme(
           backgroundColor: backgroundLight,
           foregroundColor: primaryColor,
@@ -68,6 +68,7 @@ class AppTheme {
 
   //  DARK THEME
   static ThemeData get darkTheme => ThemeData(
+    disabledColor: Colors.white54,
         brightness: Brightness.dark,
         primarySwatch: primarySwatch,
         primaryColor: primaryColor,
@@ -81,7 +82,7 @@ class AppTheme {
         ),
         textTheme: const TextTheme(
           bodyLarge: TextStyle(color: Colors.white, fontSize: 16),
-          bodyMedium: TextStyle(color: Colors.white70),
+          bodyMedium: TextStyle(color: Colors.white),
           titleLarge: TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
         ),
         elevatedButtonTheme: ElevatedButtonThemeData(

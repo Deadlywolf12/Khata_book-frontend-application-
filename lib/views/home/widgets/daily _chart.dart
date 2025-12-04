@@ -24,7 +24,7 @@ class DailyAvgSpendingCard extends StatelessWidget {
               style: TextStyle(
                 fontSize: 18,
                 fontWeight: FontWeight.w600,
-                color: AppTheme.grey,
+              color: Theme.of(context).disabledColor,
               ),
             ),
             const SizedBox(height: 12),
@@ -59,7 +59,7 @@ class DailyAvgSpendingCard extends StatelessWidget {
                             child: Text(
                               days[index],
                               style: TextStyle(
-                                color: AppTheme.grey,
+                                color: Theme.of(context).disabledColor,
                                 fontSize: 12,
                               ),
                             ),

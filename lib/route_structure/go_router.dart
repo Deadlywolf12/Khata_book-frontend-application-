@@ -15,10 +15,12 @@ import 'package:khatabookn/views/loans/loan_dashboard.dart';
 import 'package:khatabookn/views/loans/loans.dart';
 
 import 'package:khatabookn/views/navbar/navbar.dart';
+import 'package:khatabookn/views/profile/profile.dart';
 import 'package:khatabookn/views/settings/settings.dart';
 
 import 'package:khatabookn/views/splash/splash.dart';
 import 'package:khatabookn/views/storage/storage.dart';
+import 'package:khatabookn/views/transactions/transactions.dart';
 
 
 class MyRouter {
@@ -32,7 +34,9 @@ class MyRouter {
   static const String newPass = 'newPass';
   static const String app = 'app';
   static const String newTransaction = 'newTransaction';
+  static const String transactions = 'Transactions';
   static const String newLoan = 'newLoan';
+  static const String profile = 'profile';
 
   static const String storage = 'storage';
   static const String loanDashboard = 'loanDashboard';
@@ -92,6 +96,16 @@ class MyRouter {
         path: '/$newTransaction',
         name: newTransaction,
         builder: (context, state) => const AddNewTransactionScreen(),
+      ),
+        GoRoute(
+        path: '/$profile',
+        name: profile,
+        builder: (context, state) => const ProfileScreen(),
+      ),
+        GoRoute(
+        path: '/$transactions',
+        name: transactions,
+        builder: (context, state) => const TransactionsScreen(),
       ),
      GoRoute(
 path: '/$loanDashboard/:userName/:totalToTake/:totalToGive',

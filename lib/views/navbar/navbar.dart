@@ -64,9 +64,9 @@ class _NavigationHandlerState extends State<NavigationHandler> {
         children: _pages,
       ),
       bottomNavigationBar: Container(
-        padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 16),
+        padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 18),
         decoration: BoxDecoration(
-          color: AppTheme.cardColor,
+          color: Theme.of(context).cardColor,
           borderRadius: const BorderRadius.vertical(top: Radius.circular(22)),
           boxShadow: [
             BoxShadow(
@@ -96,7 +96,7 @@ class _NavigationHandlerState extends State<NavigationHandler> {
   void _showAddOptions(BuildContext context) {
   showModalBottomSheet(
     context: context,
-    backgroundColor: AppTheme.cardColor,
+    backgroundColor: Theme.of(context).cardColor,
     shape: const RoundedRectangleBorder(
       borderRadius: BorderRadius.vertical(top: Radius.circular(22)),
     ),
@@ -117,7 +117,7 @@ class _NavigationHandlerState extends State<NavigationHandler> {
             const SizedBox(height: 20),
             const Text(
               "Add Transaction Type",
-              style: TextStyle(fontSize: 18, fontWeight: FontWeight.w600,color: AppTheme.white),
+              style: TextStyle(fontSize: 18, fontWeight: FontWeight.w600),
             ),
             const SizedBox(height: 16),
             _buildOption(
@@ -209,19 +209,19 @@ class _NavButton extends StatelessWidget {
           if (item.icon == LucideIcons.plus) ...{
             FilledBox(color: AppTheme.accentColor,
             
-            shape: BoxShape.circle,child: Icon(item.icon),
+            shape: BoxShape.circle,child: Icon(item.icon,color: Colors.white),
             ),
           } else ...{
             Icon(
               item.icon,
-              color: selected ? AppTheme.primaryColor : AppTheme.grey,
+              color: selected ? AppTheme.primaryColor : Theme.of(context).disabledColor,
             ),
             const SizedBox(height: 4),
             Text(
               item.label,
               style: TextStyle(
                 fontSize: 12,
-                color: selected ? AppTheme.primaryColor : AppTheme.grey,
+                color: selected ? AppTheme.primaryColor : Theme.of(context).disabledColor,
                 fontWeight: selected ? FontWeight.w600 : FontWeight.w400,
               ),
             ),

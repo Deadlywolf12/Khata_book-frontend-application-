@@ -74,14 +74,9 @@ class _LoanDetailScreenState extends State<LoanDetailScreen>
                 CircleAvatar(
                   radius: 50,
                   backgroundColor: AppTheme.primaryColor.withOpacity(0.2),
-                  child: Text(
-                    widget.userName[0].toUpperCase(),
-                    style: TextStyle(
-                      fontSize: 40,
-                      fontWeight: FontWeight.w700,
-                      color: AppTheme.primaryColor,
-                    ),
-                  ),
+                  child:ClipOval(
+                    child: Image.asset('assets/avatar/f_avatar_3.png'),
+                  )
                 ),
                 const SizedBox(height: 16),
 
@@ -91,7 +86,7 @@ class _LoanDetailScreenState extends State<LoanDetailScreen>
                   style: TextStyle(
                     fontSize: 24,
                     fontWeight: FontWeight.w700,
-                    color: AppTheme.white,
+                  
                   ),
                 ),
                 const SizedBox(height: 20),
@@ -143,7 +138,7 @@ class _LoanDetailScreenState extends State<LoanDetailScreen>
           Container(
             margin: const EdgeInsets.symmetric(horizontal: 20),
             decoration: BoxDecoration(
-              color: AppTheme.cardColor,
+              color: Theme.of(context).cardColor,
               borderRadius: BorderRadius.circular(12),
             ),
             child: TabBar(
@@ -155,7 +150,7 @@ class _LoanDetailScreenState extends State<LoanDetailScreen>
               indicatorSize: TabBarIndicatorSize.tab,
               dividerColor: Colors.transparent,
               labelColor: Colors.white,
-              unselectedLabelColor: AppTheme.grey,
+              unselectedLabelColor: Theme.of(context).disabledColor,
               labelStyle: const TextStyle(
                 fontSize: 15,
                 fontWeight: FontWeight.w600,
@@ -191,10 +186,10 @@ class _LoanDetailScreenState extends State<LoanDetailScreen>
     required IconData icon,
   }) {
     return FilledBox(
-      color: AppTheme.cardColor,
+      color:Theme.of(context).cardColor,
       borderRadius: const BorderRadius.all(Radius.circular(16)),
       child: Padding(
-        padding: const EdgeInsets.all(16.0),
+        padding: const EdgeInsets.all(2.0),
         child: Column(
           children: [
             Icon(
@@ -208,16 +203,16 @@ class _LoanDetailScreenState extends State<LoanDetailScreen>
               style: TextStyle(
                 fontSize: 13,
                 fontWeight: FontWeight.w500,
-                color: AppTheme.grey,
+                color: Theme.of(context).disabledColor,
               ),
             ),
             const SizedBox(height: 4),
             Text(
-              amount,
+              '\$$amount',
               style: TextStyle(
-                fontSize: 20,
+                fontSize: 26,
                 fontWeight: FontWeight.w700,
-                color: AppTheme.white,
+            
               ),
             ),
           ],
@@ -270,10 +265,10 @@ class _LoanDetailScreenState extends State<LoanDetailScreen>
     return Padding(
       padding: const EdgeInsets.only(bottom: 12),
       child: FilledBox(
-        color: AppTheme.cardColor,
+        color: Theme.of(context).cardColor,
         borderRadius: const BorderRadius.all(Radius.circular(16)),
         child: Padding(
-          padding: const EdgeInsets.all(16.0),
+          padding: const EdgeInsets.all(2.0),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
@@ -306,7 +301,7 @@ class _LoanDetailScreenState extends State<LoanDetailScreen>
                           style: TextStyle(
                             fontSize: 15,
                             fontWeight: FontWeight.w600,
-                            color: AppTheme.white,
+                    
                           ),
                         ),
                         const SizedBox(height: 4),
@@ -314,7 +309,7 @@ class _LoanDetailScreenState extends State<LoanDetailScreen>
                           transaction.date,
                           style: TextStyle(
                             fontSize: 12,
-                            color: AppTheme.grey,
+                            color: Theme.of(context).disabledColor,
                           ),
                         ),
                       ],
@@ -327,7 +322,7 @@ class _LoanDetailScreenState extends State<LoanDetailScreen>
                     style: TextStyle(
                       fontSize: 18,
                       fontWeight: FontWeight.w700,
-                      color: isGiven ? Colors.red : AppTheme.green,
+                      
                     ),
                   ),
                 ],
@@ -378,13 +373,13 @@ class _LoanDetailScreenState extends State<LoanDetailScreen>
   }
 }
 
-// Model class for loan transactions
+
 class LoanTransaction {
-  final String type; // 'given' or 'taken'
+  final String type; 
   final String reason;
   final String amount;
   final String date;
-  final String? status; // 'pending', 'completed', 'overdue'
+  final String? status; 
 
   LoanTransaction({
     required this.type,

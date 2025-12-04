@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:khatabookn/route_structure/go_navigator.dart';
+import 'package:khatabookn/route_structure/go_router.dart';
 import 'package:khatabookn/theme/colors.dart';
 import 'package:khatabookn/theme/spacing.dart';
 import 'package:khatabookn/widgets/custom_button.dart';
@@ -44,17 +46,38 @@ class HomeScreen extends StatelessWidget {
                     ],
                   ),
                   const Spacer(),
-                  FilledBox(
-                    shape: BoxShape.circle,
-                    padding: EdgeInsets.zero,
-                    width: 50,
-                    height: 50,
-                    color: Theme.of(context).cardColor,
-                    child: Center(
-                      child: Icon(
-                        LucideIcons.userCircle2,
-                        size: 30,
-                        color: AppTheme.grey,
+                   GestureDetector(
+                    onTap: () => Go.named(context, MyRouter.transactions),
+                     child: FilledBox(
+                      shape: BoxShape.circle,
+                      padding: EdgeInsets.zero,
+                      width: 50,
+                      height: 50,
+                      color: Theme.of(context).cardColor,
+                      child: Center(
+                        child: Icon(
+                          LucideIcons.history,
+                          size: 30,
+                          color: AppTheme.grey,
+                        ),
+                      ),
+                                       ),
+                   ),
+                  10.kW,
+                  GestureDetector(
+                    onTap: () => Go.named(context, MyRouter.profile),
+                    child: FilledBox(
+                      shape: BoxShape.circle,
+                      padding: EdgeInsets.zero,
+                      width: 50,
+                      height: 50,
+                      color: Theme.of(context).cardColor,
+                      child: Center(
+                        child: Icon(
+                          LucideIcons.userCircle2,
+                          size: 30,
+                          color: AppTheme.grey,
+                        ),
                       ),
                     ),
                   ),
@@ -75,7 +98,7 @@ class HomeScreen extends StatelessWidget {
                       style: TextStyle(
                         fontSize: 22,
                         fontWeight: FontWeight.w400,
-                        color: AppTheme.grey,
+                        color: Theme.of(context).disabledColor,
                       ),
                     ),
                     Text(
@@ -107,7 +130,7 @@ class HomeScreen extends StatelessWidget {
                             style: TextStyle(
                               fontSize: 18,
                               fontWeight: FontWeight.w400,
-                              color: AppTheme.grey,
+                            color: Theme.of(context).disabledColor,
                             ),
                           ),
                           Text(
@@ -115,7 +138,7 @@ class HomeScreen extends StatelessWidget {
                             style: TextStyle(
                               fontSize: 28,
                               fontWeight: FontWeight.bold,
-                              color: AppTheme.green,
+                         
                             ),
                           ),
                         ],
@@ -135,7 +158,7 @@ class HomeScreen extends StatelessWidget {
                             style: TextStyle(
                               fontSize: 18,
                               fontWeight: FontWeight.w400,
-                              color: AppTheme.grey,
+                       color: Theme.of(context).disabledColor,
                             ),
                           ),
                           Text(
@@ -143,7 +166,7 @@ class HomeScreen extends StatelessWidget {
                             style: TextStyle(
                               fontSize: 28,
                               fontWeight: FontWeight.bold,
-                              color: AppTheme.red,
+                  
                             ),
                           ),
                         ],
@@ -183,7 +206,7 @@ class HomeScreen extends StatelessWidget {
                       style: TextStyle(
                         fontSize: 18,
                         fontWeight: FontWeight.w400,
-                        color: AppTheme.grey,
+                     color: Theme.of(context).disabledColor,
                       ),
                     ),
                     Text(

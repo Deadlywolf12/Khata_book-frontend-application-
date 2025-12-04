@@ -55,7 +55,7 @@ class _CategorySpendingCardState extends State<CategorySpendingCard>
               style: TextStyle(
                 fontSize: 18,
                 fontWeight: FontWeight.w600,
-                color: AppTheme.grey,
+                 color: Theme.of(context).disabledColor,
               ),
             ),
             const SizedBox(height: 12),

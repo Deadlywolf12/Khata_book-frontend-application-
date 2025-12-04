@@ -37,6 +37,19 @@ class _LoansScreenState extends State<LoansScreen> with SingleTickerProviderStat
         appBar: AppBar(
       
           elevation: 0,
+          title: Padding(
+            padding: const EdgeInsets.only(left: 30),
+            child: Center(
+            child: Text( 
+              'Loans',
+              style: TextStyle(
+                fontSize: 20,
+                fontWeight: FontWeight.w600,
+                  
+              ),
+            ),
+                    ),
+          ),
         
           actions: [
             Container(
