@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
+import 'package:khatabookn/route_structure/go_navigator.dart';
+import 'package:khatabookn/route_structure/go_router.dart';
 import 'package:khatabookn/theme/colors.dart';
 import 'package:khatabookn/theme/spacing.dart';
 import 'package:khatabookn/widgets/custom_text_field.dart';
@@ -148,10 +150,13 @@ class _AddNewTransactionScreenState extends State<AddNewTransactionScreen> {
                   ),
                 ),
                 10.kW,
-                FilledBox(
-                  child: Icon(LucideIcons.plusCircle, color: AppTheme.grey, size: 30),
-                  color: Theme.of(context).cardColor,
-                  padding: const EdgeInsets.all(17),
+                GestureDetector(
+                  onTap: () => Go.named(context,MyRouter.cat),
+                  child: FilledBox(
+                    color: Theme.of(context).cardColor,
+                    padding: const EdgeInsets.all(17),
+                    child: Icon(LucideIcons.plusCircle, color: AppTheme.grey, size: 30),
+                  ),
                 ),
               ],
             ),

@@ -71,7 +71,7 @@ class AboutScreen extends StatelessWidget {
               // Legal Card
               Card(
                 color: Theme.of(context).cardColor,
-                elevation: 2,
+                 shadowColor: Colors.transparent,
                 shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(12),
                 ),
@@ -98,6 +98,13 @@ class AboutScreen extends StatelessWidget {
                     // Terms of Service
                     ExpansionTile(
                        collapsedIconColor: AppTheme.primaryColor,
+                       shape: const RoundedRectangleBorder(
+  side: BorderSide(color: Colors.transparent),
+),
+collapsedShape: const RoundedRectangleBorder(
+  side: BorderSide(color: Colors.transparent),
+),
+
                       iconColor: AppTheme.primaryColor,
                       leading: const Icon(Icons.description_outlined),
                       title: const Text('Terms of Service'),
@@ -123,6 +130,13 @@ class AboutScreen extends StatelessWidget {
                     
                     // Privacy Policy
                     ExpansionTile(
+                      shape: const RoundedRectangleBorder(
+  side: BorderSide(color: Colors.transparent),
+),
+collapsedShape: const RoundedRectangleBorder(
+  side: BorderSide(color: Colors.transparent),
+),
+
                       collapsedIconColor: AppTheme.primaryColor,
                       iconColor: AppTheme.primaryColor,
                       leading: const Icon(Icons.privacy_tip_outlined),
@@ -149,6 +163,13 @@ class AboutScreen extends StatelessWidget {
                     
                     // Licenses
                     ExpansionTile(
+                      shape: const RoundedRectangleBorder(
+  side: BorderSide(color: Colors.transparent),
+),
+collapsedShape: const RoundedRectangleBorder(
+  side: BorderSide(color: Colors.transparent),
+),
+
                        collapsedIconColor: AppTheme.primaryColor,
                       iconColor: AppTheme.primaryColor,
                       leading: const Icon(Icons.article_outlined),
@@ -187,7 +208,8 @@ class AboutScreen extends StatelessWidget {
               // Contact Card
               Card(
                 color: Theme.of(context).cardColor,
-                elevation: 2,
+                shadowColor: Colors.transparent,
+              
                 shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(12),
                 ),

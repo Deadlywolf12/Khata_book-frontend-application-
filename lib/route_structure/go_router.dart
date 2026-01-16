@@ -6,6 +6,7 @@ import 'package:khatabookn/views/add/add_trans.dart';
 import 'package:khatabookn/views/analytics/analytics.dart';
 
 import 'package:khatabookn/views/auth/forgot_pass.dart';
+import 'package:khatabookn/views/catergory/manageCat.dart';
 import 'package:khatabookn/views/faqs/faqs.dart';
 import 'package:khatabookn/views/landing/landing_screen.dart';
 import 'package:khatabookn/views/auth/otp_screen.dart';
@@ -43,6 +44,7 @@ class MyRouter {
   static const String about = 'about';
   static const String faqs = 'faqs';
   static const String remainder = 'remainder';
+  static const String cat = 'cat';
 
   static const String storage = 'storage';
   static const String loanDashboard = 'loanDashboard';
@@ -127,6 +129,11 @@ class MyRouter {
         path: '/$transactions',
         name: transactions,
         builder: (context, state) => const TransactionsScreen(),
+      ),
+       GoRoute(
+        path: '/$cat',
+        name: cat,
+        builder: (context, state) => const CategoryScreen(),
       ),
      GoRoute(
 path: '/$loanDashboard/:userName/:totalToTake/:totalToGive',

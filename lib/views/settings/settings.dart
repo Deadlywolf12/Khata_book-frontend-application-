@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:khatabookn/helper/alert_dialog.dart';
 import 'package:khatabookn/provider/theme_pro.dart';
 import 'package:khatabookn/route_structure/go_navigator.dart';
 import 'package:khatabookn/route_structure/go_router.dart';
@@ -213,36 +214,7 @@ isDarkMode = Provider.of<ThemeNotifier>(context,listen: false).isDarkMode;
                     // Show confirmation dialog
                     showDialog(
                       context: context,
-                      builder: (context) => AlertDialog(
-                        backgroundColor: Theme.of(context).cardColor,
-                        title: Text(
-                          'Clear Storage?',
-                          
-                        ),
-                        content: Text(
-                          'This will clear all cached data. Are you sure?',
-                          style: TextStyle(color: AppTheme.grey),
-                        ),
-                        actions: [
-                          TextButton(
-                            onPressed: () => Navigator.pop(context),
-                            child: Text(
-                              'Cancel',
-                              style: TextStyle(color: AppTheme.grey),
-                            ),
-                          ),
-                          TextButton(
-                            onPressed: () {
-                              Navigator.pop(context);
-                              // Clear storage logic here
-                            },
-                            child: Text(
-                              'Clear',
-                              style: TextStyle(color: AppTheme.primaryColor),
-                            ),
-                          ),
-                        ],
-                      ),
+                      builder: (context) => CustomAlertDialog(onTapOk: () {  Navigator.pop(context); },title: "Clear Storage?",subTitle: "This action will permanently delete all your data and cannot be undone.",okBtnTitle: "Delete",)
                     );
                   },
                 ),
