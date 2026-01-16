@@ -1,10 +1,12 @@
 
 import 'package:go_router/go_router.dart';
+import 'package:khatabookn/views/about/about.dart';
 import 'package:khatabookn/views/add/add_loan.dart';
 import 'package:khatabookn/views/add/add_trans.dart';
 import 'package:khatabookn/views/analytics/analytics.dart';
 
 import 'package:khatabookn/views/auth/forgot_pass.dart';
+import 'package:khatabookn/views/faqs/faqs.dart';
 import 'package:khatabookn/views/landing/landing_screen.dart';
 import 'package:khatabookn/views/auth/otp_screen.dart';
 import 'package:khatabookn/views/auth/set_new_pass.dart';
@@ -16,6 +18,7 @@ import 'package:khatabookn/views/loans/loans.dart';
 
 import 'package:khatabookn/views/navbar/navbar.dart';
 import 'package:khatabookn/views/profile/profile.dart';
+import 'package:khatabookn/views/remainder/remainders.dart';
 import 'package:khatabookn/views/settings/settings.dart';
 
 import 'package:khatabookn/views/splash/splash.dart';
@@ -37,6 +40,9 @@ class MyRouter {
   static const String transactions = 'Transactions';
   static const String newLoan = 'newLoan';
   static const String profile = 'profile';
+  static const String about = 'about';
+  static const String faqs = 'faqs';
+  static const String remainder = 'remainder';
 
   static const String storage = 'storage';
   static const String loanDashboard = 'loanDashboard';
@@ -82,7 +88,7 @@ class MyRouter {
         name: storage,
         builder: (context, state) => const StoragePreferenceScreen(),
       ),
-      GoRoute(
+     GoRoute(
         path: '/$newPass',
         name: newPass,
         builder: (context, state) => const SetNewPasswordScreen(),
@@ -91,6 +97,11 @@ class MyRouter {
         path: '/$newLoan',
         name: newLoan,
         builder: (context, state) => const AddLoanScreen(),
+      ),
+        GoRoute(
+        path: '/$about',
+        name: about,
+        builder: (context, state) => const AboutScreen(),
       ),
       GoRoute(
         path: '/$newTransaction',
@@ -101,6 +112,16 @@ class MyRouter {
         path: '/$profile',
         name: profile,
         builder: (context, state) => const ProfileScreen(),
+      ),
+       GoRoute(
+        path: '/$faqs',
+        name : faqs,
+        builder: (context, state) => const HelpSupportScreen(),
+      ),
+        GoRoute(
+        path: '/$remainder',
+        name : remainder,
+        builder: (context, state) => const RemindersScreen(),
       ),
         GoRoute(
         path: '/$transactions',

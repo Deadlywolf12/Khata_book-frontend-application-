@@ -181,6 +181,14 @@ isDarkMode = Provider.of<ThemeNotifier>(context,listen: false).isDarkMode;
                   value: selectedCurrency,
                   onTap: _showCurrencyPicker,
                 ),
+                  _buildDivider(),
+                    _buildNavigationOption(
+                  icon: LucideIcons.bell,
+                  title: 'Remainders',
+                  subtitle: 'Set remainder alerts',
+                  value: null,
+                  onTap: (){ Go.named(context,MyRouter.remainder);},
+                ),
               ],
             ),
 
@@ -258,6 +266,34 @@ isDarkMode = Provider.of<ThemeNotifier>(context,listen: false).isDarkMode;
                 ),
               ],
             ),
+              const SizedBox(height: 16),
+
+            // aboutSection
+            _buildSectionCard(
+              title: 'About',
+              children: [
+                _buildNavigationOption(
+                  icon: LucideIcons.info,
+                  title: 'About',
+                  subtitle: 'About our app',
+                  value: null,
+                  onTap: () {
+                   Go.named(context,MyRouter.about);
+                  },
+                ),
+                 _buildDivider(),
+                 _buildNavigationOption(
+                  icon: LucideIcons.helpCircle,
+                  title: 'Help',
+                  subtitle: 'FAQS or contact our support',
+                  value: null,
+                  onTap: () {
+                   Go.named(context,MyRouter.faqs);
+                  },
+                ),
+              ],
+            ),
+            
           ],
         ),
       ),

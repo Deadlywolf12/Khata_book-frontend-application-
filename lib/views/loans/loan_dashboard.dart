@@ -51,7 +51,7 @@ class _LoanDetailScreenState extends State<LoanDetailScreen>
           style: TextStyle(
             fontSize: 20,
             fontWeight: FontWeight.w600,
-            color: AppTheme.white,
+            
           ),
         ),
         actions: [
