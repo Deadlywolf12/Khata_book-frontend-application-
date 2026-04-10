@@ -4,6 +4,8 @@ import 'package:khatabookn/views/about/about.dart';
 import 'package:khatabookn/views/add/add_loan.dart';
 import 'package:khatabookn/views/add/add_trans.dart';
 import 'package:khatabookn/views/analytics/analytics.dart';
+import 'package:khatabookn/views/auth/create_name.dart';
+import 'package:khatabookn/views/auth/create_pin.dart';
 
 import 'package:khatabookn/views/auth/forgot_pass.dart';
 import 'package:khatabookn/views/catergory/manageCat.dart';
@@ -34,6 +36,7 @@ class MyRouter {
   static const String signin = 'signin';
   static const String splash = 'splash';
   static const String otp = 'otp';
+  static const String createPin = 'createPin';
   static const String forgotPass = 'forgotPass';
   static const String newPass = 'newPass';
   static const String app = 'app';
@@ -45,6 +48,7 @@ class MyRouter {
   static const String faqs = 'faqs';
   static const String remainder = 'remainder';
   static const String cat = 'cat';
+  static const String createUsername = 'createUsername';
 
   static const String storage = 'storage';
   static const String loanDashboard = 'loanDashboard';
@@ -69,6 +73,16 @@ class MyRouter {
         path: '/$signin',
         name: signin,
         builder: (context, state) => const SignInScreen(),
+      ),
+        GoRoute(
+        path: '/$createPin',
+        name: createPin,
+        builder: (context, state) => const CreatePinScreen(),
+      ),
+        GoRoute(
+        path: '/$createUsername',
+        name: createUsername,
+        builder: (context, state) => const CreateUsernameScreen(),
       ),
       GoRoute(
         path: '/$signup',

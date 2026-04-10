@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+import 'package:khatabookn/helper/alert_dialog.dart';
 import 'package:khatabookn/route_structure/go_navigator.dart';
 import 'package:khatabookn/route_structure/go_router.dart';
 import 'package:khatabookn/theme/colors.dart';
@@ -169,6 +170,26 @@ class _SignInScreenState extends State<SignInScreen> {
                         style: TextStyle(color: AppTheme.grey, fontSize: 14),
                       ),
                     ],
+                  ),
+                ),30.kH,
+                  Center(
+                  child: GestureDetector(
+                    onTap: (){
+                    showDialog(context: context, builder: (context) =>  CustomAlertDialog(
+                      title: "Continue as Guest?",
+                      subTitle: "Continue as a guest to use the app offline. Please note that your data is stored only on this device and will not be recoverable if lost. Create an account to enable secure backup and sync.",
+                      cancelBtnTitle: "Cancel",
+                      okBtnTitle: "Continue",
+                      onTapOk: (){
+                        Go.pop(context);
+                      Go.named(context, MyRouter.createPin);
+                      },
+                    ));
+                    },
+                    child: const Text(
+                      "Sign in as Guest?",
+                      style: TextStyle(color: AppTheme.primaryColor, fontSize: 18),
+                    ),
                   ),
                 ),
                 70.kH,

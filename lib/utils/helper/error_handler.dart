@@ -2,7 +2,8 @@ import 'dart:io';
 
 import 'package:flutter/material.dart';
 import 'package:khatabookn/utils/dev/log.dart';
-import 'package:khatabookn/widgets/snack_bar.dart';
+import 'package:khatabookn/widgets/snackbar.dart';
+// import 'package:khatabookn/widgets/snack_bar.dart';
 
 
 
@@ -22,7 +23,7 @@ class ErrorHandler {
       errorMessage = "An unexpected issue occurred.";
     }
 
-    showSnackBar(context, errorMessage);
+    SnackBarHelper.showError(errorMessage);
 
     PrintLog.logMessage('Error: $e');
     return Future.error(errorMessage);
@@ -43,19 +44,19 @@ class ErrorHandler {
       errorMessage = "An unexpected issue occurred.";
     }
 
-    showSnackBar(context, errorMessage);
+    SnackBarHelper.showError(errorMessage);
     PrintLog.logMessage('Error: $e');
     return errorMessage;
   }
 
   static apiException(BuildContext context, dynamic e) {
-    showSnackBar(context, e);
+    SnackBarHelper.showError(e);
 
     PrintLog.logMessage('Error: $e');
   }
 
   static apiExceptionFuture(BuildContext context, dynamic e) {
-    showSnackBar(context, e);
+    SnackBarHelper.showError(e);
 
     PrintLog.logMessage('Error: $e');
     return Future.error(e);

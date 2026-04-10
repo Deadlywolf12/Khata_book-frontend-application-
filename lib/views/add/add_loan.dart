@@ -4,7 +4,7 @@ import 'package:khatabookn/theme/colors.dart';
 import 'package:khatabookn/theme/spacing.dart';
 import 'package:khatabookn/widgets/custom_text_field.dart';
 import 'package:khatabookn/widgets/filled_box.dart';
-import 'package:khatabookn/widgets/snack_bar.dart';
+// import 'package:khatabookn/widgets/snack_bar.dart';
 import 'package:lucide_icons/lucide_icons.dart';
 
 class AddLoanScreen extends StatefulWidget {
@@ -55,7 +55,7 @@ class _AddLoanScreenState extends State<AddLoanScreen> {
   }
 
   void _addTransaction() {
-    showSnackBar(context, "Loan added successfully");
+    // showSnackBar(context, "Loan added successfully");
   }
 
   @override

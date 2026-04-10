@@ -48,10 +48,14 @@ dependencies:
   # flutter_staggered_grid_view: ^0.7.0
   # carousel_slider: ^4.2.1
   shared_preferences: ^2.2.2
+  drift: ^2.31.0
   # lottie: ^3.3.1
-  # flutter_spinkit: ^5.2.1
+  flutter_spinkit: ^5.2.1
   # animated_custom_dropdown: ^3.1.1
+  flutter_secure_storage: ^10.0.0
+  crypto: ^3.0.7
   intl: ^0.20.2
+  username_gen: ^1.0.4
 
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.
@@ -83,14 +87,14 @@ flutter_launcher_icons:
 
 flutter_native_splash:
   color: "#ffffff"                        # background for light mode
-  image: assets/icon/splash_light.png           # logo for light mode
+  image: assets/icon/app_icon.png           # logo for light mode
 
   color_dark: "#000000"                   # background for dark mode
   image_dark: assets/icon/splash_dark.png # logo for dark mode
 
   android_12:
     color: "#ffffff"
-    image: assets/icon/splash_light.png
+    image: assets/icon/app_icon.png
     color_dark: "#000000"
     image_dark: assets/icon/splash_dark.png
 
