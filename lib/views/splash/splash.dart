@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_secure_storage/flutter_secure_storage.dart';
+import 'package:khatabookn/main.dart';
+import 'package:khatabookn/provider/auth_pro.dart';
 import 'package:khatabookn/route_structure/go_navigator.dart';
 import 'package:khatabookn/route_structure/go_router.dart';
 
@@ -7,6 +10,8 @@ import 'package:khatabookn/theme/spacing.dart';
 import 'dart:async';
 
 import 'package:khatabookn/utils/constants.dart';
+import 'package:khatabookn/utils/helper/secured_storage/secure_storage_keys.dart';
+import 'package:provider/provider.dart';
 
 class SplashScreen extends StatefulWidget {
   const SplashScreen({super.key});
@@ -20,43 +25,69 @@ class _SplashScreenState extends State<SplashScreen>
   late AnimationController _controller;
   late Animation<double> _animation;
   bool _isWorkDone = false;
+  final _secureStorage = const FlutterSecureStorage();
 
-  @override
-  void initState() {
-    super.initState();
 
-    // Progress animation setup
-    _controller = AnimationController(
-      vsync: this,
-      duration: const Duration(seconds: 5), // total time
-    );
 
-    _animation = Tween<double>(begin: 0, end: 1).animate(_controller)
-      ..addListener(() {
-        setState(() {});
-      });
+Future<bool> hasProfile() async {
+  final profile = await appDatabase.getProfile();
+  return profile != null;
+}
+Future<bool> hasPin() async {
+  final pin = await _secureStorage.read(key: StorageKeys.savePin);
+  final salt = await _secureStorage.read(key: StorageKeys.pinSalt);
 
-    _controller.forward();
+  return pin != null && salt != null;
+}
+@override
+void initState() {
+  super.initState();
 
-    // Simulate your background work
-    _simulateLoadingTasks();
-  }
+  _controller = AnimationController(
+    vsync: this,
+    duration: const Duration(seconds: 10), // max safety duration
+  );
 
-  Future<void> _simulateLoadingTasks() async {
-    // Example: background work (API, DB, model loading, etc.)
-    await Future.delayed(const Duration(seconds: 4));
-    _isWorkDone = true;
-
-    // Animate to 100% instantly
-    _controller.animateTo(1.0, duration: const Duration(milliseconds: 800));
-
-    // Wait a bit then navigate
-    Future.delayed(const Duration(seconds: 1), () {
-      if (mounted) {
-        Go.namedReplace(context,MyRouter.landing);
-      }
+  _animation = Tween<double>(begin: 0, end: 1).animate(_controller)
+    ..addListener(() {
+      setState(() {});
     });
+
+  // Start at 70% slowly — leaves room for work to finish
+  _controller.animateTo(0.7, duration: const Duration(seconds: 3));
+
+  _simulateLoadingTasks();
+}
+Future<void> _simulateLoadingTasks() async {
+  final profileExists = await hasProfile();
+  final pinExists = await hasPin();
+  final isNewUser = !profileExists || !pinExists;
+
+  if (mounted) {
+    final auth = Provider.of<AuthProvider>(context, listen: false);
+    await auth.loadUserMode();
+    await auth.restoreLockState(); 
   }
+
+  await _controller.animateTo(
+    1.0,
+    duration: const Duration(milliseconds: 600),
+  );
+
+  if (!mounted) return;
+  setState(() => _isWorkDone = true);
+
+  await Future.delayed(const Duration(milliseconds: 800));
+  if (!mounted) return;
+
+  if (isNewUser) {
+    Go.namedReplace(context, MyRouter.landing);
+  } else if (pinExists) {
+    Go.namedReplace(context, MyRouter.authentication);
+  } else {
+    Go.namedReplace(context, MyRouter.landing);
+  }
+}
 
   @override
   void dispose() {
@@ -130,3 +161,6 @@ class _SplashScreenState extends State<SplashScreen>
     );
   }
 }
+
+
+

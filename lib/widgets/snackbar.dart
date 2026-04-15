@@ -101,63 +101,53 @@ class SnackBarHelper {
     );
   }
 
-  /// Internal method to show SnackBar
-  static void _showSnackBar({
-    required String message,
-    required Color backgroundColor,
-    IconData? icon,
-    Color iconColor = Colors.white,
-    Duration duration = const Duration(seconds: 3),
-    SnackBarAction? action,
-  }) {
-    // Clear any existing SnackBars
-    scaffoldMessengerKey.currentState?.clearSnackBars();
+ static void _showSnackBar({
+  required String message,
+  required Color backgroundColor,
+  IconData? icon,
+  Color iconColor = Colors.white,
+  Duration duration = const Duration(seconds: 3),
+  SnackBarAction? action,
+}) {
+  scaffoldMessengerKey.currentState?.clearSnackBars();
 
-    scaffoldMessengerKey.currentState?.showSnackBar(
-      SnackBar(
-        content: Row(
-          children: [
-            if (icon != null) ...[
-              Container(
-                padding: const EdgeInsets.all(8),
-                decoration: BoxDecoration(
-                  color: Colors.white.withOpacity(0.2),
-                  shape: BoxShape.circle,
-                ),
-                child: Icon(
-                  icon,
-                  color: iconColor,
-                  size: 20,
-                ),
+  scaffoldMessengerKey.currentState?.showSnackBar(
+    SnackBar(
+      content: Row(
+        children: [
+          if (icon != null) ...[
+            Container(
+              padding: const EdgeInsets.all(8),
+              decoration: BoxDecoration(
+                color: Colors.white.withOpacity(0.2),
+                shape: BoxShape.circle,
               ),
-              const SizedBox(width: 12),
-            ],
-            Expanded(
-              child: Text(
-                message,
-                style: const TextStyle(
-                  color: Colors.white,
-                  fontSize: 14,
-                  fontWeight: FontWeight.w500,
-                ),
+              child: Icon(icon, color: iconColor, size: 20),
+            ),
+            const SizedBox(width: 12),
+          ],
+          Expanded(
+            child: Text(
+              message,
+              style: const TextStyle(
+                color: Colors.white,
+                fontSize: 14,
+                fontWeight: FontWeight.w500,
               ),
             ),
-          ],
-        ),
-        backgroundColor: backgroundColor,
-        behavior: SnackBarBehavior.floating,
-        duration: duration,
-        shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(12),
-        ),
-        margin: const EdgeInsets.all(16),
-        padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
-        elevation: 6,
-        action: action,
+          ),
+        ],
       ),
-    );
-  }
-
+      backgroundColor: backgroundColor,
+      behavior: SnackBarBehavior.fixed,
+      duration: duration,
+      shape: const RoundedRectangleBorder(),   // ← no radius, fixed bars are edge-to-edge
+      padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 14),
+      elevation: 1,
+      action: action,
+    ),
+  );
+}
   /// Dismiss all active SnackBars
   static void dismiss() {
     scaffoldMessengerKey.currentState?.clearSnackBars();

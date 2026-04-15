@@ -37,6 +37,9 @@ class AppTheme {
 
   //  LIGHT THEME
   static ThemeData get lightTheme => ThemeData(
+      snackBarTheme: const SnackBarThemeData(
+    insetPadding: EdgeInsets.zero,
+  ),
         brightness: Brightness.light,
         primarySwatch: primarySwatch,
         primaryColor: primaryColor,
@@ -70,6 +73,9 @@ class AppTheme {
   //  DARK THEME
   static ThemeData get darkTheme => ThemeData(
     disabledColor: Colors.white54,
+      snackBarTheme: const SnackBarThemeData(
+    insetPadding: EdgeInsets.zero,
+  ),
         brightness: Brightness.dark,
         primarySwatch: primarySwatch,
         primaryColor: primaryColor,

@@ -5,7 +5,10 @@ import 'package:khatabookn/route_structure/go_navigator.dart';
 import 'package:khatabookn/route_structure/go_router.dart';
 import 'package:khatabookn/theme/colors.dart';
 import 'package:khatabookn/theme/spacing.dart';
+import 'package:khatabookn/utils/helper/secured_storage/secure_storage_helper.dart';
+import 'package:khatabookn/utils/helper/secured_storage/secure_storage_keys.dart';
 import 'package:khatabookn/widgets/custom_text_field.dart';
+import 'package:khatabookn/widgets/snackbar.dart';
 import 'package:lucide_icons/lucide_icons.dart';
 
 class SignInScreen extends StatefulWidget {
@@ -180,9 +183,23 @@ class _SignInScreenState extends State<SignInScreen> {
                       subTitle: "Continue as a guest to use the app offline. Please note that your data is stored only on this device and will not be recoverable if lost. Create an account to enable secure backup and sync.",
                       cancelBtnTitle: "Cancel",
                       okBtnTitle: "Continue",
-                      onTapOk: (){
+                      onTapOk: ()async{
                         Go.pop(context);
-                      Go.named(context, MyRouter.createPin);
+                        final pinCreated = await SecureStorageHelper.read(StorageKeys.pinCreated);
+
+                        if(!mounted) return;
+                        
+                        if(pinCreated != null && pinCreated == 'true'){
+                          Go.namedReplace(context, MyRouter.createUsername, extra: {
+                            'accType': "guest",
+                            'pin': true,
+                          });
+                          SnackBarHelper.showSuccess("Guest account already has a PIN. Redirecting to username creation.");
+                          return;
+                        }
+                      Go.named(context, MyRouter.createPin,extra: {
+                        'accType':"guest"
+                      });
                       },
                     ));
                     },

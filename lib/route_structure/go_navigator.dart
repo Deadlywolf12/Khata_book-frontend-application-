@@ -54,18 +54,20 @@ static onNamedReplace(
 }
 
 
-  static namedReplace(
-    BuildContext context,
-    String screen, {
-    Map<String, String> params = const <String, String>{},
-    Map<String, dynamic> queryParams = const <String, dynamic>{},
-  }) {
-    context.goNamed(
-      screen,
-      queryParameters: queryParams,
-      pathParameters: params,
-    );
-  }
+ static namedReplace(
+  BuildContext context,
+  String screen, {
+  Map<String, String> params = const <String, String>{},
+  Map<String, dynamic> queryParams = const <String, dynamic>{},
+  Object? extra, // Add this
+}) {
+  context.goNamed(
+    screen,
+    queryParameters: queryParams,
+    pathParameters: params,
+    extra: extra, // Pass it here
+  );
+}
 
   static replacementroute(BuildContext context, Widget screen) {
     Navigator.pushReplacement(
