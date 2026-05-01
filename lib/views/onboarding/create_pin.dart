@@ -10,7 +10,8 @@ import 'package:provider/provider.dart';
 
 class CreatePinScreen extends StatefulWidget {
   final String accType;
-  const CreatePinScreen({super.key, required this.accType});
+  final bool isForgot;
+  const CreatePinScreen({super.key, required this.accType, required this.isForgot});
 
   @override
   State<CreatePinScreen> createState() => _CreatePinScreenState();
@@ -55,9 +56,14 @@ class _CreatePinScreenState extends State<CreatePinScreen> {
     if(widget.accType == "guest"){
      await authPro.signUpUserAsGuest();
      await authPro.saveOfflinePin(pin);
-       Go.namedReplace(context, MyRouter.createUsername, extra: {
+     if(widget.isForgot){
+        Go.namedReplace(context, MyRouter.authentication, );
+        return;
+     }
+       Go.namedReplace(context, MyRouter.securityQuestion, extra: {
       'pin': true,
       'accType': widget.accType,
+      'isForgetting': false,
     });
     } else {
       SnackBarHelper.showSuccess("online navigation");
@@ -68,10 +74,18 @@ class _CreatePinScreenState extends State<CreatePinScreen> {
 
   @override
   void dispose() {
-    for (var c in _pinControllers) c.dispose();
-    for (var c in _confirmPinControllers) c.dispose();
-    for (var f in _pinFocusNodes) f.dispose();
-    for (var f in _confirmFocusNodes) f.dispose();
+    for (var c in _pinControllers) {
+      c.dispose();
+    }
+    for (var c in _confirmPinControllers) {
+      c.dispose();
+    }
+    for (var f in _pinFocusNodes) {
+      f.dispose();
+    }
+    for (var f in _confirmFocusNodes) {
+      f.dispose();
+    }
     super.dispose();
   }
 

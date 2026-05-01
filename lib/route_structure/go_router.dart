@@ -92,8 +92,10 @@ class MyRouter {
           final extra = state.extra as Map<String, dynamic>?;
           
           final isForgetting = extra?['isForgetting'] as bool? ?? false;
+          final pinStatus = extra?['pin'] as bool?;
+          final accType = extra?['accType'] as String?;
 
-          return enterSecurityQuestion(isForgetting: isForgetting);
+          return EnterSecurityQuestion(isForgetting: isForgetting, pinStatus: pinStatus, accType: accType);
         },
       ),
       GoRoute(
@@ -107,7 +109,8 @@ class MyRouter {
         builder: (context, state) {
           final extra = state.extra as Map<String, dynamic>?;
           final accType = extra?['accType'] as String?;
-          return CreatePinScreen(accType: accType ?? '');
+          final isForgot = extra?['isForgot'] as bool?;
+          return CreatePinScreen(accType: accType ?? '', isForgot: isForgot ?? false);
         },
       ),
         GoRoute(
@@ -237,6 +240,7 @@ path: '/$loanDashboard/:userName/:totalToTake/:totalToGive',
 
    GoRoute(
       path: '/home',
+      name: home,
       builder: (context, state) => const NavigationHandler(),
     ),
    

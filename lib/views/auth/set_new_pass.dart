@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
 import 'package:khatabookn/route_structure/go_navigator.dart';
-import 'package:khatabookn/route_structure/go_router.dart';
+
 import 'package:khatabookn/theme/colors.dart';
 import 'package:khatabookn/theme/spacing.dart';
 import 'package:khatabookn/widgets/custom_text_field.dart';
@@ -16,7 +16,7 @@ class SetNewPasswordScreen extends StatefulWidget {
 }
 
 class _SetNewPasswordScreenState extends State<SetNewPasswordScreen> {
-  final TextEditingController _emailController = TextEditingController();
+
   bool _isPasswordVisible = false;
 
   @override

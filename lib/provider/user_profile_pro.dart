@@ -30,6 +30,7 @@ class UserProfileProvider extends ChangeNotifier {
       notifyListeners();
 
       _profile = await _db.getProfile();
+      log("accType: ${_profile?.accType} , and currencyCode: ${_profile?.currencyCode} and currencyName: ${_profile?.currencyName} and pinEnabled: ${_profile?.pinEnabled} , and uid: ${_profile?.uid} and updatedAt: ${_profile?.updatedAt}, and createdAt: ${_profile?.createdAt} , and id: ${_profile?.id} and avatarIndex: ${_profile?.avatarIndex} and username: ${_profile?.username} , and currencyCode: ${_profile?.currencyCode} and currencyName: ${_profile?.currencyName}");
       _status = ProfileStatus.loaded;
     } catch (e) {
       _error = e.toString();

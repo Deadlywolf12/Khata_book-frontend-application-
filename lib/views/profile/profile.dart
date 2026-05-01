@@ -1,9 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:khatabookn/database/app_database.dart';
+import 'package:khatabookn/provider/user_profile_pro.dart';
 import 'package:khatabookn/theme/colors.dart';
 import 'package:khatabookn/theme/spacing.dart';
 import 'package:khatabookn/widgets/custom_button.dart';
 import 'package:khatabookn/widgets/filled_box.dart';
 import 'package:lucide_icons/lucide_icons.dart';
+import 'package:provider/provider.dart';
 
 class ProfileScreen extends StatefulWidget {
   const ProfileScreen({super.key});
@@ -13,9 +16,7 @@ class ProfileScreen extends StatefulWidget {
 }
 
 class _ProfileScreenState extends State<ProfileScreen> {
-  String userName = 'John Smith';
-  String userEmail = 'john.smith@example.com';
-  String userPassword = '••••••••';
+ 
 
   @override
   Widget build(BuildContext context) {
@@ -37,7 +38,8 @@ class _ProfileScreenState extends State<ProfileScreen> {
           ),
         ),
       ),
-      body: SingleChildScrollView(
+      body: Consumer<UserProfileProvider>(builder: (context, value, child) {
+        return SingleChildScrollView(
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
@@ -60,7 +62,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                     ),
                     child: ClipOval(
                       child: Image.asset(
-                        'assets/avatar/f_avatar_3.png', // Your asset image path
+                        'assets/avatar/avatar${value.profile?.avatarIndex ?? 0}.png', // Your asset image path
                         fit: BoxFit.cover,
                         errorBuilder: (context, error, stackTrace) {
                           // Fallback if image not found
@@ -68,7 +70,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                             color: AppTheme.primaryColor.withOpacity(0.2),
                             child: Center(
                               child: Text(
-                                userName[0].toUpperCase(),
+                                value.profile?.username.substring(0, 1).toUpperCase() ?? '',
                                 style: TextStyle(
                                   fontSize: 40,
                                   fontWeight: FontWeight.w700,
@@ -84,7 +86,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                   const SizedBox(height: 16),
 
                    Text(
-                    userName,
+                    value.profile?.username ?? 'user',
                     style: TextStyle(
                       fontSize: 20,
                       fontWeight: FontWeight.w700
@@ -94,7 +96,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
 
                   // User Email
                   Text(
-                    userEmail,
+                    'user@example.com',
                     style: TextStyle(
                       fontSize: 17,
                       color: Theme.of(context).disabledColor,
@@ -134,13 +136,13 @@ class _ProfileScreenState extends State<ProfileScreen> {
                           _buildInfoField(
                             icon: LucideIcons.user,
                             label: 'Name',
-                            value: userName,
+                            value: value.profile?.username ?? 'user',
                             showEdit: true,
                             onEdit: () {
-                              _showEditDialog('Name', userName, (newValue) {
-                                setState(() {
-                                  userName = newValue;
-                                });
+                              _showEditDialog('Name', value.profile?.username ?? 'user', (newValue) {
+                                // setState(() {
+                                //   userName = newValue;
+                                // });
                               });
                             },
                           ),
@@ -150,13 +152,13 @@ class _ProfileScreenState extends State<ProfileScreen> {
                           _buildInfoField(
                             icon: LucideIcons.mail,
                             label: 'Email',
-                            value: userEmail,
+                            value: 'user@example.com',
                             showEdit: true,
                             onEdit: () {
-                              _showEditDialog('Email', userEmail, (newValue) {
-                                setState(() {
-                                  userEmail = newValue;
-                                });
+                              _showEditDialog('Email', 'user@example.com', (newValue) {
+                                // setState(() {
+                                //   userEmail = newValue;
+                                // });
                               });
                             },
                           ),
@@ -166,13 +168,13 @@ class _ProfileScreenState extends State<ProfileScreen> {
                           _buildInfoField(
                             icon: LucideIcons.lock,
                             label: 'Password',
-                            value: userPassword,
+                            value: '••••••••',
                             showEdit: true,
                             onEdit: () {
                               _showEditDialog('Password', '', (newValue) {
-                                setState(() {
-                                  userPassword = '••••••••';
-                                });
+                                // setState(() {
+                                //   userPassword = '••••••••';
+                                // });
                               }, isPassword: true);
                             },
                           ),
@@ -204,7 +206,9 @@ class _ProfileScreenState extends State<ProfileScreen> {
             ),
           ],
         ),
-      ),
+      );
+   
+      }),
     );
   }
 

@@ -17,13 +17,13 @@ class AuthProvider extends ChangeNotifier {
   int _attempts = 0;
   bool _isLocked = false;
   DateTime? _lockUntil;
-  Timer? _lockTimer;           // ← countdown timer
-  int _remainingSeconds = 0;   // ← seconds left shown in UI
+  Timer? _lockTimer;          
+  int _remainingSeconds = 0;   
 
   DateTime? get lockUntil => _lockUntil;
   int get attempts => _attempts;
   bool get isLocked => _isLocked;
-  int get remainingSeconds => _remainingSeconds; // ← exposed to UI
+  int get remainingSeconds => _remainingSeconds; 
 
   static const int maxAttempts = 3;
   static const Duration lockDuration = Duration(minutes: 1);
@@ -94,12 +94,102 @@ class AuthProvider extends ChangeNotifier {
     return _runWithLoading(() async {
       final salt = const Uuid().v4();
       await SecureStorageHelper.write(StorageKeys.pinSalt, salt);
-      final hashedPin = _hashPin(pin, salt);
+      final hashedPin = _hash(pin, salt);
       await SecureStorageHelper.write(StorageKeys.savePin, hashedPin);
       await SecureStorageHelper.write(StorageKeys.pinCreated, 'true');
       log('pin save success');
     });
   }
+
+   Future<void> saveSecurityQuestion(String question, String answer,int questionNumber) {
+    return _runWithLoading(() async {
+      final salt = const Uuid().v4();
+      if (questionNumber == 1) {
+        await SecureStorageHelper.write(StorageKeys.securityQuestion1, question);
+        final hashedAns = _hash(answer, salt);
+        await SecureStorageHelper.write(StorageKeys.securityAnswer1, hashedAns);
+           await SecureStorageHelper.write(StorageKeys.securityQuestion1Status, 'true');
+              await SecureStorageHelper.write(StorageKeys.securityAnswerSalt, salt);
+      } else if (questionNumber == 2) {
+        await SecureStorageHelper.write(StorageKeys.securityQuestion2, question);
+        final hashedAns = _hash(answer, salt);
+        await SecureStorageHelper.write(StorageKeys.securityAnswer2, hashedAns);
+           await SecureStorageHelper.write(StorageKeys.securityQuestion2Status, 'true');
+              await SecureStorageHelper.write(StorageKeys.securityAnswer2Salt, salt);
+      }
+
+      
+   
+   
+      log('security question $questionNumber save success');
+    });
+  }
+
+  Future<String> loadSecurityQuestions(int questionNumber) async {
+   if(questionNumber == 1){
+      final question = await SecureStorageHelper.read(StorageKeys.securityQuestion1);
+      log('security question 1 loaded: $question');
+      return question ?? '';
+    } else if(questionNumber == 2){
+       final question = await SecureStorageHelper.read(StorageKeys.securityQuestion2);
+      log('security question 2 loaded: $question');
+      return question ?? '';
+    }
+    return 'could not load question';
+  }
+
+  
+  Future<bool> authenticateQuestions(int questionNumber,userAns) async {
+    if(questionNumber != 1 && questionNumber != 2) return false;
+    final questionStatus = questionNumber == 1
+        ? await SecureStorageHelper.read(StorageKeys.securityQuestion1Status)
+        : await SecureStorageHelper.read(StorageKeys.securityQuestion2Status);
+
+        if(questionStatus != 'true') return false;
+
+
+
+      return _runWithLoading(() async {
+
+         if(questionNumber == 1){
+      final salt = await SecureStorageHelper.read(StorageKeys.securityAnswerSalt);
+      final storedHash = await SecureStorageHelper.read(StorageKeys.securityAnswer1);
+      if (salt == null || storedHash == null) return false;
+      final inputHash = _hash(userAns, salt);
+      final isValid = inputHash == storedHash;
+
+      if (isValid) {
+        log('security question 1 authentication success');
+        return true;
+      } else {
+        log('security question 1 authentication failed');
+        return false;
+      }
+     
+    
+    } else if(questionNumber == 2){
+       final salt = await SecureStorageHelper.read(StorageKeys.securityAnswer2Salt);
+      final storedHash = await SecureStorageHelper.read(StorageKeys.securityAnswer2);
+      if (salt == null || storedHash == null) return false;
+      final inputHash = _hash(userAns, salt);
+      final isValid = inputHash == storedHash;
+
+      if (isValid) {
+        log('security question 2 authentication success');
+        return true;
+      } else {
+        log('security question 2 authentication failed');
+        return false;
+      }
+    }
+    return false;
+
+
+      });
+  
+  }
+
+
 
   Future<bool> authenticatePin(String pin) {
     return _runWithLoading(() async {
@@ -121,7 +211,7 @@ class AuthProvider extends ChangeNotifier {
 
       if (salt == null || storedHash == null) return false;
 
-      final inputHash = _hashPin(pin, salt);
+      final inputHash = _hash(pin, salt);
       final isValid = inputHash == storedHash;
 
       if (isValid) {
@@ -275,6 +365,10 @@ class AuthProvider extends ChangeNotifier {
     }
   }
 
+
+
+
+
   // ── Clear all ─────────────────────────────────────────────────────────────
   Future<void> clearMode() async {
     _lockTimer?.cancel();
@@ -292,7 +386,7 @@ class AuthProvider extends ChangeNotifier {
   }
 
   // ── Hashing ───────────────────────────────────────────────────────────────
-  String _hashPin(String pin, String salt) {
+  String _hash(String pin, String salt) {
     return sha256.convert(utf8.encode(pin + salt)).toString();
   }
 }
